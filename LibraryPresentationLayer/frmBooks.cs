@@ -10,17 +10,11 @@ using System.Windows.Forms;
 
 namespace LibraryPresentationLayer
 {
-    public partial class frmMainMenu : Form
+    public partial class frmBooks : Form
     {
-        public frmMainMenu()
+        public frmBooks()
         {
             InitializeComponent();
-        }
-
-        private void btnManageBooks_Click(object sender, EventArgs e)
-        {
-            frmBooks frm = new frmBooks();
-            frm.ShowDialog();
         }
     }
 }
