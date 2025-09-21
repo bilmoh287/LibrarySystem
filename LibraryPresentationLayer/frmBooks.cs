@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using LibraryBussinessLayer;
 
 namespace LibraryPresentationLayer
 {
@@ -15,6 +16,15 @@ namespace LibraryPresentationLayer
         public frmBooks()
         {
             InitializeComponent();
+        }
+        
+        private void _RefreshBooks()
+        {
+            dgvListBooks.DataSource = clsBooks.GetAllBooks();
+        }
+        private void frmBooks_Load(object sender, EventArgs e)
+        {
+            _RefreshBooks();
         }
     }
 }

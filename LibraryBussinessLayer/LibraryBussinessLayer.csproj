@@ -41,8 +41,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BooksData.cs" />
+    <Compile Include="Books.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\LibraryDataAccessLayer\LibraryDataAccessLayer.csproj">
+      <Project>{ecf8b8ec-3151-4141-90ff-db31810170da}</Project>
+      <Name>LibraryDataAccessLayer</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

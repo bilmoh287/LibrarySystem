@@ -55,6 +55,7 @@
             this.Controls.Add(this.dgvListBooks);
             this.Name = "frmBooks";
             this.Text = "frmBooks";
+            this.Load += new System.EventHandler(this.frmBooks_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvListBooks)).EndInit();
             this.ResumeLayout(false);
 
