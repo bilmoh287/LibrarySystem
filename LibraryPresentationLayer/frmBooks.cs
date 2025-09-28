@@ -17,6 +17,8 @@ namespace LibraryPresentationLayer
         {
             InitializeComponent();
         }
+
+        clsBooks _Book;
         
         private void _RefreshBooks()
         {
@@ -25,6 +27,21 @@ namespace LibraryPresentationLayer
         private void frmBooks_Load(object sender, EventArgs e)
         {
             _RefreshBooks();
+        }
+
+        private void txtSearch_TextChanged(object sender, EventArgs e)
+        {
+            _Book = clsBooks.Find(txtSearch.Text);
+            if(_Book != null)
+            {
+                dgvListBooks.DataSource = _Book;
+            }
+        }
+
+        private void btnAddBooks_Click(object sender, EventArgs e)
+        {
+            frmAddEditBooks frm = new frmAddEditBooks(-1);
+            frm.ShowDialog();
         }
     }
 }

@@ -24,7 +24,7 @@ namespace LibraryDataAccessLayer
             {
                 connection.Open();
                 SqlDataReader reader = command.ExecuteReader();
-                while (reader.Read())
+                while (reader.HasRows)
                 {
                     dtbooks.Load(reader);
                 }
@@ -37,6 +37,80 @@ namespace LibraryDataAccessLayer
             finally { connection.Close(); }
 
             return dtbooks;
+        }
+
+        public static bool FindByName(string Name, ref int ID, ref string ISBN
+            , ref DateTime PubDate, ref string Genre, ref string AdditionalInfo)
+        {
+            bool IsFound = false;
+            SqlConnection connection = new SqlConnection(clsDataAccessSetting.ConnectionString);
+
+            string Query = "SELECCT * FROM Books WHERE Name = @Name;";
+
+            SqlCommand command = new SqlCommand(Query, connection);
+
+            command.Parameters.AddWithValue("Name", Name);
+
+            try
+            {
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader();
+
+                if(reader.Read())
+                {
+                    ID = Convert.ToInt32(reader["ID"]);
+                    Name = (string)reader["Name"];
+                    ISBN = (string)reader["ISBN"];
+                    PubDate = (DateTime)reader["PubDate"];
+                    AdditionalInfo = (string)reader["AdditionalInfo"];
+
+                    IsFound = true;
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            finally { connection.Close(); }
+
+            return IsFound;
+        }
+
+        public static bool FindByID(int ID, ref string Name, ref string ISBN
+    , ref DateTime PubDate, ref string Genre, ref string AdditionalInfo)
+        {
+            bool IsFound = false;
+            SqlConnection connection = new SqlConnection(clsDataAccessSetting.ConnectionString);
+
+            string Query = "SELECCT * FROM Books WHERE BookID = @ID;";
+
+            SqlCommand command = new SqlCommand(Query, connection);
+
+            command.Parameters.AddWithValue("ID", ID);
+
+            try
+            {
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader();
+
+                if (reader.Read())
+                {
+                    ID = Convert.ToInt32(reader["ID"]);
+                    Name = (string)reader["Name"];
+                    ISBN = (string)reader["ISBN"];
+                    PubDate = (DateTime)reader["PubDate"];
+                    AdditionalInfo = (string)reader["AdditionalInfo"];
+
+                    IsFound = true;
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            finally { connection.Close(); }
+
+            return IsFound;
         }
     }
 }
