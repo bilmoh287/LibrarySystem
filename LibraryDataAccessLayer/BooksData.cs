@@ -77,7 +77,7 @@ namespace LibraryDataAccessLayer
         }
 
         public static bool FindByID(int ID, ref string Name, ref string ISBN
-    , ref DateTime PubDate, ref string Genre, ref string AdditionalInfo)
+            , ref DateTime PubDate, ref string Genre, ref string AdditionalInfo)
         {
             bool IsFound = false;
             SqlConnection connection = new SqlConnection(clsDataAccessSetting.ConnectionString);
@@ -111,6 +111,57 @@ namespace LibraryDataAccessLayer
             finally { connection.Close(); }
 
             return IsFound;
+        }
+        public static int AddNewBook(string Name, String ISBN, DateTime PubDate, string Genre, string AdditionalInfo)
+        {
+            int ID = -1;
+
+            SqlConnection connection = new SqlConnection (clsDataAccessSetting.ConnectionString);
+
+            string Query = @"
+                            INSERT INTO [dbo].[Books]
+                                       ([Title]
+                                       ,[ISBN]
+                                       ,[PublicationDate]
+                                       ,[Genre]
+                                       ,[AdditionInfo])
+                                 VALUES
+                                       @(Name
+                                       ,@ISBN
+                                       ,@PubDate
+                                       ,@Genre
+                                       ,@AdditionalInfo);
+                                SELECT SCOPE_IDENTITY();";
+
+            SqlCommand command = new SqlCommand(Query, connection);
+
+            command.Parameters.AddWithValue("@Title", Name);
+            command.Parameters.AddWithValue("@ISBN", ISBN);
+            command.Parameters.AddWithValue("@PublicationDate", PubDate);
+            command.Parameters.AddWithValue("@Genre", Genre);
+            if (AdditionalInfo != "")
+                command.Parameters.AddWithValue("@AdditionalInfo", Genre);
+            else
+                command.Parameters.AddWithValue("@AdditionalInfo", System.DBNull.Value);
+
+            try
+            {
+                connection.Open();
+                object result = command.ExecuteScalar();
+
+                if (result != null && int.TryParse(result.ToString(), out int InsertedID))
+                {
+                    ID = InsertedID;
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            finally { connection.Close(); }
+
+            return ID;
+
         }
     }
 }

@@ -40,7 +40,7 @@
             this.txtGenre = new System.Windows.Forms.TextBox();
             this.txtAddInfo = new System.Windows.Forms.TextBox();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.txtID = new System.Windows.Forms.Label();
+            this.lblBookID = new System.Windows.Forms.Label();
             this.btnSave = new System.Windows.Forms.Button();
             this.btnClose = new System.Windows.Forms.Button();
             this.SuspendLayout();
@@ -157,15 +157,15 @@
             this.dateTimePicker1.Size = new System.Drawing.Size(279, 22);
             this.dateTimePicker1.TabIndex = 11;
             // 
-            // txtID
+            // lblBookID
             // 
-            this.txtID.AutoSize = true;
-            this.txtID.Font = new System.Drawing.Font("Modern No. 20", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtID.Location = new System.Drawing.Point(137, 99);
-            this.txtID.Name = "txtID";
-            this.txtID.Size = new System.Drawing.Size(49, 22);
-            this.txtID.TabIndex = 12;
-            this.txtID.Text = "? ? ?";
+            this.lblBookID.AutoSize = true;
+            this.lblBookID.Font = new System.Drawing.Font("Modern No. 20", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblBookID.Location = new System.Drawing.Point(137, 99);
+            this.lblBookID.Name = "lblBookID";
+            this.lblBookID.Size = new System.Drawing.Size(49, 22);
+            this.lblBookID.TabIndex = 12;
+            this.lblBookID.Text = "? ? ?";
             // 
             // btnSave
             // 
@@ -195,7 +195,7 @@
             this.ClientSize = new System.Drawing.Size(517, 579);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.btnSave);
-            this.Controls.Add(this.txtID);
+            this.Controls.Add(this.lblBookID);
             this.Controls.Add(this.dateTimePicker1);
             this.Controls.Add(this.txtAddInfo);
             this.Controls.Add(this.txtGenre);
@@ -210,6 +210,7 @@
             this.Controls.Add(this.lblAddEditBooks);
             this.Name = "frmAddEditBooks";
             this.Text = "Form1";
+            this.Load += new System.EventHandler(this.frmAddEditBooks_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -229,7 +230,7 @@
         private System.Windows.Forms.TextBox txtGenre;
         private System.Windows.Forms.TextBox txtAddInfo;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
-        private System.Windows.Forms.Label txtID;
+        private System.Windows.Forms.Label lblBookID;
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Button btnClose;
     }

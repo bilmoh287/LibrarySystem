@@ -43,5 +43,12 @@ namespace LibraryPresentationLayer
             frmAddEditBooks frm = new frmAddEditBooks(-1);
             frm.ShowDialog();
         }
+
+        private void editToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            int ID = (int)dgvListBooks.CurrentRow.Cells[0].Value;
+            frmAddEditBooks frm = new frmAddEditBooks(ID);
+            frm.ShowDialog();
+        }
     }
 }

@@ -7,28 +7,28 @@ namespace LibraryBussinessLayer
     public class clsBooks
     {
         public enum enMode { AddNewMode, UpdateMode };
-        public enMode Mode = enMode.UpdateMode;
+        public enMode _Mode = enMode.UpdateMode;
 
-        int ID {  get; set; }
+        public int ID {  get; set; }
         public string Name { get; set; }
         public string ISBN { get; set; }
         public DateTime PublicationDate { get; set; }
         public string Genre { get; set; }
         public string AdditionalInfo { get; set; }
 
-        clsBooks()
+        public clsBooks()
         {
-            ID = 0;
+            ID = -1;
             Name = "";
             ISBN = "";
             PublicationDate = DateTime.Now;
             Genre = "";
             AdditionalInfo = "";
 
-            Mode = enMode.AddNewMode;
+            _Mode = enMode.AddNewMode;
         }
 
-        clsBooks(int ID, string Name, String ISBN, DateTime PubDate, string Genre, string AdditionalInfo)
+        private clsBooks(int ID, string Name, String ISBN, DateTime PubDate, string Genre, string AdditionalInfo)
         {
             this.ID = 0;
             this.Name = Name;
@@ -37,7 +37,7 @@ namespace LibraryBussinessLayer
             this.Genre = Genre;
             this.AdditionalInfo = AdditionalInfo;
 
-            Mode = enMode.UpdateMode;
+            _Mode = enMode.UpdateMode;
         }
 
         public static clsBooks Find(String Name)
@@ -74,6 +74,39 @@ namespace LibraryBussinessLayer
         public static DataTable GetAllBooks()
         {
             return clsBooksData.GetAllBooks();
+        }
+
+
+        private bool _AddNewBook()
+        {
+            this.ID =  clsBooksData.AddNewBook(this.Name, this.ISBN, this.PublicationDate,
+                this.Genre, this.AdditionalInfo);
+
+            return this.ID != -1;
+        }
+
+        private bool _UpdateBook()
+        {
+            return true;
+        }
+        public bool Save()
+        {
+            switch(_Mode)
+            {
+                case enMode.AddNewMode:
+                    if (_AddNewBook())
+                    {
+                        _Mode = enMode.UpdateMode;
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                case enMode.UpdateMode:
+                   return _UpdateBook();
+            }
+            return false;
         }
     }
 }

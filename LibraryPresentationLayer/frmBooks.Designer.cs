@@ -30,11 +30,11 @@
         {
             this.components = new System.ComponentModel.Container();
             this.dgvListBooks = new System.Windows.Forms.DataGridView();
-            this.label1 = new System.Windows.Forms.Label();
-            this.txtSearch = new System.Windows.Forms.TextBox();
             this.cmnBooks = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.label1 = new System.Windows.Forms.Label();
+            this.txtSearch = new System.Windows.Forms.TextBox();
             this.btnAddBooks = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvListBooks)).BeginInit();
             this.cmnBooks.SuspendLayout();
@@ -56,6 +56,28 @@
             this.dgvListBooks.Size = new System.Drawing.Size(988, 437);
             this.dgvListBooks.TabIndex = 0;
             // 
+            // cmnBooks
+            // 
+            this.cmnBooks.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.cmnBooks.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.editToolStripMenuItem,
+            this.deleteToolStripMenuItem});
+            this.cmnBooks.Name = "cmnBooks";
+            this.cmnBooks.Size = new System.Drawing.Size(211, 80);
+            // 
+            // editToolStripMenuItem
+            // 
+            this.editToolStripMenuItem.Name = "editToolStripMenuItem";
+            this.editToolStripMenuItem.Size = new System.Drawing.Size(210, 24);
+            this.editToolStripMenuItem.Text = "Edit";
+            this.editToolStripMenuItem.Click += new System.EventHandler(this.editToolStripMenuItem_Click);
+            // 
+            // deleteToolStripMenuItem
+            // 
+            this.deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
+            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(210, 24);
+            this.deleteToolStripMenuItem.Text = "Delete";
+            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -74,27 +96,6 @@
             this.txtSearch.Size = new System.Drawing.Size(190, 30);
             this.txtSearch.TabIndex = 2;
             this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
-            // 
-            // cmnBooks
-            // 
-            this.cmnBooks.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.cmnBooks.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.editToolStripMenuItem,
-            this.deleteToolStripMenuItem});
-            this.cmnBooks.Name = "cmnBooks";
-            this.cmnBooks.Size = new System.Drawing.Size(123, 52);
-            // 
-            // editToolStripMenuItem
-            // 
-            this.editToolStripMenuItem.Name = "editToolStripMenuItem";
-            this.editToolStripMenuItem.Size = new System.Drawing.Size(122, 24);
-            this.editToolStripMenuItem.Text = "Edit";
-            // 
-            // deleteToolStripMenuItem
-            // 
-            this.deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
-            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(122, 24);
-            this.deleteToolStripMenuItem.Text = "Delete";
             // 
             // btnAddBooks
             // 

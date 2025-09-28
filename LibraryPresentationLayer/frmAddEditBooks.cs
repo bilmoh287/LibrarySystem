@@ -16,11 +16,13 @@ namespace LibraryPresentationLayer
         enum enMode {AddNewMode, UpdateMode};
         enMode _Mode;
 
-        clsBooks _Books;
+        int _BookID;
+        clsBooks _Book;
         public frmAddEditBooks(int ID)
         {
             InitializeComponent();
-            if(ID ==  -1)
+            _BookID = ID;
+            if(_BookID ==  -1)
                 _Mode = enMode.AddNewMode;
             else
                 _Mode = enMode.UpdateMode;
@@ -34,11 +36,36 @@ namespace LibraryPresentationLayer
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            _Books.Name = txtName.Text;
-            _Books.ISBN = txtISBN.Text;
-            _Books.PublicationDate = dateTimePicker1.Value;
-            _Books.Genre = txtGenre.Text;
-            _Books.AdditionalInfo = txtAddInfo.Text;
+            _Book.Name = txtName.Text;
+            _Book.ISBN = txtISBN.Text;
+            _Book.PublicationDate = dateTimePicker1.Value;
+            _Book.Genre = txtGenre.Text;
+            _Book.AdditionalInfo = txtAddInfo.Text;
+
+            if(_Book.Save())
+            {
+                MessageBox.Show("Data Saved Successfully.");
+            }
+            else
+            {
+                MessageBox.Show("Error: Data Is not Saved Successfully.");
+            }
+
+            lblAddEditBooks.Text = "Edit BookID = " + _Book.ID;
+            lblBookID.Text = _Book.ID.ToString();
+        }
+
+        private void frmAddEditBooks_Load(object sender, EventArgs e)
+        {
+            if(_Mode  == enMode.AddNewMode)
+            {
+                lblAddEditBooks.Text = "Add New Book";
+                _Book = new clsBooks();
+                return;
+            }
+
+            _Book = clsBooks.Find(_BookID);
+            lblAddEditBooks.Text = "Edit Book " + _BookID.ToString();
         }
     }
 }
