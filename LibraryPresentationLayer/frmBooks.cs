@@ -69,5 +69,24 @@ namespace LibraryPresentationLayer
             frm.OnBookSaved += _RefreshBooks; // subscribe to event
             frm.ShowDialog();
         }
+
+        private void deleteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            int BookID = (int)dgvListBooks.CurrentRow.Cells[0].Value;
+            if(MessageBox.Show("Are you sure you want to delete Book [" + BookID + "]", "Confirm Delete", MessageBoxButtons.OKCancel,
+                MessageBoxIcon.Question) == DialogResult.OK)
+            {
+                if(clsBooks.DeleteBook(BookID))
+                {
+                    MessageBox.Show("Book Deleted Successfully");
+                    _RefreshBooks();
+                }
+                else
+                {
+                    MessageBox.Show("Failed to Delete Book");
+                }
+            }
+
+        }
     }
 }

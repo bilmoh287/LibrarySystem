@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data.SqlClient;
+using System.Xml.Linq;
 
 namespace LibraryDataAccessLayer
 {
@@ -201,6 +202,38 @@ namespace LibraryDataAccessLayer
             }
 
             return isUpdated;
+        }
+
+        public static bool DeleteBook(int ID)
+        {
+            bool IsDeleted = false;
+            SqlConnection connection = new SqlConnection(clsDataAccessSetting.ConnectionString);
+
+            string Query = "Delete Books Where BookID = @ID";
+
+            SqlCommand command = new SqlCommand(Query, connection);
+
+            command.Parameters.AddWithValue("ID", ID);
+
+            try
+            {
+                connection.Open();
+                int res = command.ExecuteNonQuery();
+
+                if (res > 0)
+                {
+                    IsDeleted = true;
+                }
+            }
+            catch(Exception ex) 
+            {
+                Console.WriteLine(ex.Message);
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return IsDeleted;
         }
     }
 }

@@ -110,5 +110,10 @@ namespace LibraryBussinessLayer
             }
             return false;
         }
+
+        public static bool DeleteBook(int ID)
+        {
+            return clsBooksData.DeleteBook(ID);
+        }
     }
 }
