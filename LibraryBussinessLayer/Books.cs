@@ -10,7 +10,7 @@ namespace LibraryBussinessLayer
         public enMode _Mode = enMode.UpdateMode;
 
         public int ID {  get; set; }
-        public string Name { get; set; }
+        public string Title { get; set; }
         public string ISBN { get; set; }
         public DateTime PublicationDate { get; set; }
         public string Genre { get; set; }
@@ -19,7 +19,7 @@ namespace LibraryBussinessLayer
         public clsBooks()
         {
             ID = -1;
-            Name = "";
+            Title = "";
             ISBN = "";
             PublicationDate = DateTime.Now;
             Genre = "";
@@ -28,12 +28,12 @@ namespace LibraryBussinessLayer
             _Mode = enMode.AddNewMode;
         }
 
-        private clsBooks(int ID, string Name, String ISBN, DateTime PubDate, string Genre, string AdditionalInfo)
+        private clsBooks(int ID, string Title, String ISBN, DateTime PubDate, string Genre, string AdditionalInfo)
         {
-            this.ID = 0;
-            this.Name = Name;
+            this.ID = ID;
+            this.Title = Title;
             this.ISBN = ISBN;
-            this.PublicationDate = PublicationDate;
+            this.PublicationDate = PubDate;
             this.Genre = Genre;
             this.AdditionalInfo = AdditionalInfo;
 
@@ -79,7 +79,7 @@ namespace LibraryBussinessLayer
 
         private bool _AddNewBook()
         {
-            this.ID =  clsBooksData.AddNewBook(this.Name, this.ISBN, this.PublicationDate,
+            this.ID =  clsBooksData.AddNewBook(this.Title, this.ISBN, this.PublicationDate,
                 this.Genre, this.AdditionalInfo);
 
             return this.ID != -1;
@@ -87,8 +87,10 @@ namespace LibraryBussinessLayer
 
         private bool _UpdateBook()
         {
-            return true;
+            return clsBooksData.UpdateBook(this.ID, this.Title, this.ISBN, 
+                this.PublicationDate, this.Genre, this.AdditionalInfo);
         }
+
         public bool Save()
         {
             switch(_Mode)

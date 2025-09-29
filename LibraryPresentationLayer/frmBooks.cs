@@ -41,13 +41,15 @@ namespace LibraryPresentationLayer
         private void btnAddBooks_Click(object sender, EventArgs e)
         {
             frmAddEditBooks frm = new frmAddEditBooks(-1);
+            frm.OnBookSaved += _RefreshBooks; // subscribe to event
             frm.ShowDialog();
         }
 
         private void editToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            int ID = (int)dgvListBooks.CurrentRow.Cells[0].Value;
+            int ID = (int)dgvListBooks.CurrentRow.Cells["BookID"].Value;
             frmAddEditBooks frm = new frmAddEditBooks(ID);
+            frm.OnBookSaved += _RefreshBooks; // subscribe to event
             frm.ShowDialog();
         }
     }

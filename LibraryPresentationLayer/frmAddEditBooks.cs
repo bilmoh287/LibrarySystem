@@ -13,6 +13,9 @@ namespace LibraryPresentationLayer
 {
     public partial class frmAddEditBooks : Form
     {
+        public delegate void BookSavedHandler();
+        public event BookSavedHandler OnBookSaved;
+
         enum enMode {AddNewMode, UpdateMode};
         enMode _Mode;
 
@@ -29,14 +32,9 @@ namespace LibraryPresentationLayer
 
         }
 
-        private void lblAddEditBooks_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void btnSave_Click(object sender, EventArgs e)
         {
-            _Book.Name = txtName.Text;
+            _Book.Title = txtName.Text;
             _Book.ISBN = txtISBN.Text;
             _Book.PublicationDate = dateTimePicker1.Value;
             _Book.Genre = txtGenre.Text;
@@ -45,6 +43,7 @@ namespace LibraryPresentationLayer
             if(_Book.Save())
             {
                 MessageBox.Show("Data Saved Successfully.");
+                OnBookSaved?.Invoke();
             }
             else
             {
@@ -65,7 +64,25 @@ namespace LibraryPresentationLayer
             }
 
             _Book = clsBooks.Find(_BookID);
-            lblAddEditBooks.Text = "Edit Book " + _BookID.ToString();
+            if(_Book == null)
+            {
+                MessageBox.Show("Book Not Found");
+                this.Close();
+                return;
+            }
+
+            lblAddEditBooks.Text = "Edit Book With ID =  " + _BookID.ToString();
+            lblBookID.Text = _BookID.ToString();
+            txtName.Text = _Book.Title;
+            txtISBN.Text = _Book.ISBN;
+            dateTimePicker1.Value = _Book.PublicationDate;
+            txtGenre.Text = _Book.Genre;
+            txtAddInfo.Text = _Book.AdditionalInfo;
+        }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

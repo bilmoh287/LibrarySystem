@@ -39,80 +39,78 @@ namespace LibraryDataAccessLayer
             return dtbooks;
         }
 
-        public static bool FindByName(string Name, ref int ID, ref string ISBN
-            , ref DateTime PubDate, ref string Genre, ref string AdditionalInfo)
+        public static bool FindByName(string Title, ref int ID, ref string ISBN,
+            ref DateTime PubDate, ref string Genre, ref string AdditionalInfo)
         {
             bool IsFound = false;
-            SqlConnection connection = new SqlConnection(clsDataAccessSetting.ConnectionString);
-
-            string Query = "SELECCT * FROM Books WHERE Name = @Name;";
-
-            SqlCommand command = new SqlCommand(Query, connection);
-
-            command.Parameters.AddWithValue("Name", Name);
-
-            try
+            using (SqlConnection connection = new SqlConnection(clsDataAccessSetting.ConnectionString))
             {
-                connection.Open();
-                SqlDataReader reader = command.ExecuteReader();
+                string Query = "SELECT * FROM Books WHERE Title = @Title;";
 
-                if(reader.Read())
+                SqlCommand command = new SqlCommand(Query, connection);
+                command.Parameters.AddWithValue("@Title", Title);
+
+                try
                 {
-                    ID = Convert.ToInt32(reader["ID"]);
-                    Name = (string)reader["Name"];
-                    ISBN = (string)reader["ISBN"];
-                    PubDate = (DateTime)reader["PubDate"];
-                    AdditionalInfo = (string)reader["AdditionalInfo"];
+                    connection.Open();
+                    SqlDataReader reader = command.ExecuteReader();
 
-                    IsFound = true;
+                    if (reader.Read())
+                    {
+                        ID = Convert.ToInt32(reader["BookID"]);
+                        ISBN = (string)reader["ISBN"];
+                        PubDate = (DateTime)reader["PublicationDate"];
+                        Genre = (string)reader["Genre"];
+                        AdditionalInfo = reader["AdditionInfo"] != DBNull.Value ? (string)reader["AdditionInfo"] : "";
+
+                        IsFound = true;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
                 }
             }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-            }
-            finally { connection.Close(); }
-
             return IsFound;
         }
 
-        public static bool FindByID(int ID, ref string Name, ref string ISBN
-            , ref DateTime PubDate, ref string Genre, ref string AdditionalInfo)
+
+        public static bool FindByID(int ID, ref string Title, ref string ISBN,
+            ref DateTime PubDate, ref string Genre, ref string AdditionalInfo)
         {
             bool IsFound = false;
-            SqlConnection connection = new SqlConnection(clsDataAccessSetting.ConnectionString);
-
-            string Query = "SELECCT * FROM Books WHERE BookID = @ID;";
-
-            SqlCommand command = new SqlCommand(Query, connection);
-
-            command.Parameters.AddWithValue("ID", ID);
-
-            try
+            using (SqlConnection connection = new SqlConnection(clsDataAccessSetting.ConnectionString))
             {
-                connection.Open();
-                SqlDataReader reader = command.ExecuteReader();
+                string Query = "SELECT * FROM Books WHERE BookID = @ID;";
 
-                if (reader.Read())
+                SqlCommand command = new SqlCommand(Query, connection);
+                command.Parameters.AddWithValue("@ID", ID);
+
+                try
                 {
-                    ID = Convert.ToInt32(reader["ID"]);
-                    Name = (string)reader["Name"];
-                    ISBN = (string)reader["ISBN"];
-                    PubDate = (DateTime)reader["PubDate"];
-                    AdditionalInfo = (string)reader["AdditionalInfo"];
+                    connection.Open();
+                    SqlDataReader reader = command.ExecuteReader();
 
-                    IsFound = true;
+                    if (reader.Read())
+                    {
+                        Title = (string)reader["Title"];
+                        ISBN = (string)reader["ISBN"];
+                        PubDate = (DateTime)reader["PublicationDate"];
+                        Genre = (string)reader["Genre"];
+                        AdditionalInfo = reader["AdditionInfo"] != DBNull.Value ? (string)reader["AdditionInfo"] : "";
+
+                        IsFound = true;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
                 }
             }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-            }
-            finally { connection.Close(); }
-
             return IsFound;
         }
-        public static int AddNewBook(string Name, String ISBN, DateTime PubDate, string Genre, string AdditionalInfo)
+
+        public static int AddNewBook(string Title, String ISBN, DateTime PubDate, string Genre, string AdditionalInfo)
         {
             int ID = -1;
 
@@ -126,21 +124,21 @@ namespace LibraryDataAccessLayer
                                        ,[Genre]
                                        ,[AdditionInfo])
                                  VALUES
-                                       @(Name
+                                       (@Title
                                        ,@ISBN
-                                       ,@PubDate
+                                       ,@PublicationDate
                                        ,@Genre
                                        ,@AdditionalInfo);
                                 SELECT SCOPE_IDENTITY();";
 
             SqlCommand command = new SqlCommand(Query, connection);
 
-            command.Parameters.AddWithValue("@Title", Name);
+            command.Parameters.AddWithValue("@Title", Title);
             command.Parameters.AddWithValue("@ISBN", ISBN);
             command.Parameters.AddWithValue("@PublicationDate", PubDate);
             command.Parameters.AddWithValue("@Genre", Genre);
             if (AdditionalInfo != "")
-                command.Parameters.AddWithValue("@AdditionalInfo", Genre);
+                command.Parameters.AddWithValue("@AdditionalInfo", AdditionalInfo);
             else
                 command.Parameters.AddWithValue("@AdditionalInfo", System.DBNull.Value);
 
@@ -162,6 +160,47 @@ namespace LibraryDataAccessLayer
 
             return ID;
 
+        }
+
+        public static bool UpdateBook(int ID, string Title, string ISBN, DateTime PubDate, string Genre, string AdditionalInfo)
+        {
+            bool isUpdated = false;
+
+            using (SqlConnection connection = new SqlConnection(clsDataAccessSetting.ConnectionString))
+            {
+                string Query = @"
+                                UPDATE Books
+                                SET Title = @Title,
+                                    ISBN = @ISBN,
+                                    PublicationDate = @PublicationDate,
+                                    Genre = @Genre,
+                                    AdditionInfo = @AdditionalInfo
+                                WHERE BookID = @ID;";
+
+                SqlCommand command = new SqlCommand(Query, connection);
+                command.Parameters.AddWithValue("@ID", ID);
+                command.Parameters.AddWithValue("@Title", Title);
+                command.Parameters.AddWithValue("@ISBN", ISBN);
+                command.Parameters.AddWithValue("@PublicationDate", PubDate);
+                command.Parameters.AddWithValue("@Genre", Genre);
+                if (!string.IsNullOrEmpty(AdditionalInfo))
+                    command.Parameters.AddWithValue("@AdditionalInfo", AdditionalInfo);
+                else
+                    command.Parameters.AddWithValue("@AdditionalInfo", DBNull.Value);
+
+                try
+                {
+                    connection.Open();
+                    int rows = command.ExecuteNonQuery();
+                    isUpdated = (rows > 0);
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
+            }
+
+            return isUpdated;
         }
     }
 }

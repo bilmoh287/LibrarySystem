@@ -48,13 +48,12 @@
             // lblAddEditBooks
             // 
             this.lblAddEditBooks.AutoSize = true;
-            this.lblAddEditBooks.Font = new System.Drawing.Font("Modern No. 20", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAddEditBooks.Location = new System.Drawing.Point(152, 35);
+            this.lblAddEditBooks.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblAddEditBooks.Location = new System.Drawing.Point(132, 37);
             this.lblAddEditBooks.Name = "lblAddEditBooks";
-            this.lblAddEditBooks.Size = new System.Drawing.Size(63, 22);
+            this.lblAddEditBooks.Size = new System.Drawing.Size(85, 29);
             this.lblAddEditBooks.TabIndex = 0;
             this.lblAddEditBooks.Text = "label1";
-            this.lblAddEditBooks.Click += new System.EventHandler(this.lblAddEditBooks_Click);
             // 
             // label1
             // 
@@ -118,31 +117,31 @@
             // 
             // txtName
             // 
-            this.txtName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtName.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtName.Location = new System.Drawing.Point(137, 156);
             this.txtName.Name = "txtName";
-            this.txtName.Size = new System.Drawing.Size(221, 30);
+            this.txtName.Size = new System.Drawing.Size(221, 24);
             this.txtName.TabIndex = 7;
             // 
             // txtISBN
             // 
-            this.txtISBN.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtISBN.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtISBN.Location = new System.Drawing.Point(137, 215);
             this.txtISBN.Name = "txtISBN";
-            this.txtISBN.Size = new System.Drawing.Size(221, 30);
+            this.txtISBN.Size = new System.Drawing.Size(221, 24);
             this.txtISBN.TabIndex = 8;
             // 
             // txtGenre
             // 
-            this.txtGenre.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtGenre.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtGenre.Location = new System.Drawing.Point(137, 328);
             this.txtGenre.Name = "txtGenre";
-            this.txtGenre.Size = new System.Drawing.Size(221, 30);
+            this.txtGenre.Size = new System.Drawing.Size(221, 24);
             this.txtGenre.TabIndex = 9;
             // 
             // txtAddInfo
             // 
-            this.txtAddInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtAddInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtAddInfo.Location = new System.Drawing.Point(180, 392);
             this.txtAddInfo.Multiline = true;
             this.txtAddInfo.Name = "txtAddInfo";
@@ -151,7 +150,7 @@
             // 
             // dateTimePicker1
             // 
-            this.dateTimePicker1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dateTimePicker1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dateTimePicker1.Location = new System.Drawing.Point(137, 276);
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(279, 22);
@@ -160,10 +159,10 @@
             // lblBookID
             // 
             this.lblBookID.AutoSize = true;
-            this.lblBookID.Font = new System.Drawing.Font("Modern No. 20", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblBookID.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblBookID.Location = new System.Drawing.Point(137, 99);
             this.lblBookID.Name = "lblBookID";
-            this.lblBookID.Size = new System.Drawing.Size(49, 22);
+            this.lblBookID.Size = new System.Drawing.Size(60, 25);
             this.lblBookID.TabIndex = 12;
             this.lblBookID.Text = "? ? ?";
             // 
@@ -187,6 +186,7 @@
             this.btnClose.TabIndex = 14;
             this.btnClose.Text = "Close";
             this.btnClose.UseVisualStyleBackColor = true;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // frmAddEditBooks
             // 
