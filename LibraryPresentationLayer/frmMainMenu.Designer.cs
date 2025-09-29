@@ -64,6 +64,7 @@
             this.btnManageAuthors.TabIndex = 2;
             this.btnManageAuthors.Text = "Manage Authors";
             this.btnManageAuthors.UseVisualStyleBackColor = true;
+            this.btnManageAuthors.Click += new System.EventHandler(this.btnManageAuthors_Click);
             // 
             // btnBorrowReturn
             // 

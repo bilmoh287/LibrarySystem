@@ -52,11 +52,23 @@
     <Compile Include="frmAddEditBooks.Designer.cs">
       <DependentUpon>frmAddEditBooks.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmAuthors.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmAuthors.Designer.cs">
+      <DependentUpon>frmAuthors.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmBooks.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmBooks.Designer.cs">
       <DependentUpon>frmBooks.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmEditAddAuthors.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmEditAddAuthors.Designer.cs">
+      <DependentUpon>frmEditAddAuthors.cs</DependentUpon>
     </Compile>
     <Compile Include="frmMainMenu.cs">
       <SubType>Form</SubType>
@@ -69,8 +81,14 @@
     <EmbeddedResource Include="frmAddEditBooks.resx">
       <DependentUpon>frmAddEditBooks.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmAuthors.resx">
+      <DependentUpon>frmAuthors.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmBooks.resx">
       <DependentUpon>frmBooks.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmEditAddAuthors.resx">
+      <DependentUpon>frmEditAddAuthors.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmMainMenu.resx">
       <DependentUpon>frmMainMenu.cs</DependentUpon>

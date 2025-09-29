@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Authors.cs" />
     <Compile Include="Books.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

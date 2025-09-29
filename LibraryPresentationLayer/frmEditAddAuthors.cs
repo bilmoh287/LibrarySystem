@@ -10,23 +10,21 @@ using System.Windows.Forms;
 
 namespace LibraryPresentationLayer
 {
-    public partial class frmMainMenu : Form
+    public partial class frmEditAddAuthors : Form
     {
-        public frmMainMenu()
+        public frmEditAddAuthors()
         {
             InitializeComponent();
         }
 
-        private void btnManageBooks_Click(object sender, EventArgs e)
+        private void pictureBox1_Click(object sender, EventArgs e)
         {
-            frmBooks frm = new frmBooks();
-            frm.ShowDialog();
+
         }
 
-        private void btnManageAuthors_Click(object sender, EventArgs e)
+        private void frmEditAddAuthors_Load(object sender, EventArgs e)
         {
-            frmAuthors frm = new frmAuthors();
-            frm.ShowDialog();
+
         }
     }
 }
