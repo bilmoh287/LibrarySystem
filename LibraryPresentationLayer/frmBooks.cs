@@ -31,10 +31,27 @@ namespace LibraryPresentationLayer
 
         private void txtSearch_TextChanged(object sender, EventArgs e)
         {
+            //_Book = clsBooks.Find(txtSearch.Text);
+            //if(_Book != null)
+            //{
+            //    dgvListBooks.DataSource = _Book;
+            //}
+
             _Book = clsBooks.Find(txtSearch.Text);
-            if(_Book != null)
+            if (_Book != null)
             {
-                dgvListBooks.DataSource = _Book;
+                DataTable dt = new DataTable();
+                dt.Columns.Add("BookID", typeof(int));
+                dt.Columns.Add("Title", typeof(string));
+                dt.Columns.Add("ISBN", typeof(string));
+                dt.Columns.Add("PublicationDate", typeof(DateTime));
+                dt.Columns.Add("Genre", typeof(string));
+                dt.Columns.Add("AdditionalInfo", typeof(string));
+
+                dt.Rows.Add(_Book.ID, _Book.Title, _Book.ISBN,
+                            _Book.PublicationDate, _Book.Genre, _Book.AdditionalInfo);
+
+                dgvListBooks.DataSource = dt;
             }
         }
 
