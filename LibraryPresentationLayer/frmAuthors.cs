@@ -30,7 +30,9 @@ namespace LibraryPresentationLayer
 
         private void btnAddAuthor_Click(object sender, EventArgs e)
         {
-
+            frmEditAddAuthors frm = new frmEditAddAuthors(-1);
+            frm.OnBookSaved += _RefreshAuthors;
+            frm.ShowDialog();
         }
     }
 }

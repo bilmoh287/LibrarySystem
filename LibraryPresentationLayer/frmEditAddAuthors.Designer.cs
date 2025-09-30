@@ -38,7 +38,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.lblAddEditAuthors = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtContactInfo = new System.Windows.Forms.TextBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btnSave = new System.Windows.Forms.Button();
             this.btnClose = new System.Windows.Forms.Button();
@@ -139,13 +139,13 @@
             this.lblAddEditAuthors.TabIndex = 13;
             this.lblAddEditAuthors.Text = "label1";
             // 
-            // textBox1
+            // txtContactInfo
             // 
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(153, 313);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(221, 24);
-            this.textBox1.TabIndex = 26;
+            this.txtContactInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtContactInfo.Location = new System.Drawing.Point(153, 313);
+            this.txtContactInfo.Name = "txtContactInfo";
+            this.txtContactInfo.Size = new System.Drawing.Size(221, 24);
+            this.txtContactInfo.TabIndex = 26;
             // 
             // pictureBox1
             // 
@@ -165,6 +165,7 @@
             this.btnSave.TabIndex = 28;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // btnClose
             // 
@@ -175,6 +176,7 @@
             this.btnClose.TabIndex = 29;
             this.btnClose.Text = "Close";
             this.btnClose.UseVisualStyleBackColor = true;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // frmEditAddAuthors
             // 
@@ -184,7 +186,7 @@
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.pictureBox1);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txtContactInfo);
             this.Controls.Add(this.lblAuthorsID);
             this.Controls.Add(this.dateTimePicker1);
             this.Controls.Add(this.txtNationality);
@@ -216,7 +218,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label lblAddEditAuthors;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtContactInfo;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Button btnClose;
