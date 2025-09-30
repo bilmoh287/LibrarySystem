@@ -24,7 +24,7 @@ namespace LibraryDataAccessLayer
             {
                 connection.Open();
                 SqlDataReader reader = command.ExecuteReader();
-                while (reader.HasRows)
+                if (reader.HasRows)
                 {
                     dtAuthors.Load(reader);
                 }
