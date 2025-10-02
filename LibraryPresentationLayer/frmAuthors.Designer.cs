@@ -79,6 +79,7 @@
             this.bookWroteToolStripMenuItem.Name = "bookWroteToolStripMenuItem";
             this.bookWroteToolStripMenuItem.Size = new System.Drawing.Size(210, 24);
             this.bookWroteToolStripMenuItem.Text = "Book Wrote";
+            this.bookWroteToolStripMenuItem.Click += new System.EventHandler(this.bookWroteToolStripMenuItem_Click);
             // 
             // editToolStripMenuItem
             // 

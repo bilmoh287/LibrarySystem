@@ -61,5 +61,12 @@ namespace LibraryPresentationLayer
                 }
             }
         }
+
+        private void bookWroteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            int AuthorID = (int)dataGridView1.CurrentRow.Cells[0].Value;
+            frmBooksWrotedByAuthor frm = new frmBooksWrotedByAuthor(AuthorID);
+            frm.ShowDialog();
+        }
     }
 }
