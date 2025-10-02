@@ -49,6 +49,21 @@ namespace LibraryBussinessLayer
             return clsAuthorsData.GetAllAuthorsList();
         }
 
+
+        public static clsAuthors Find(int AuthorID)
+        {
+            string FullName = "", Nationality = "", ContactInfo = "", ImagePath = "";
+            DateTime DateOfBirth = DateTime.Now;
+
+            if(clsAuthorsData.FindByID(AuthorID, ref FullName, ref DateOfBirth, ref Nationality, ref ContactInfo, ref ImagePath))
+            {
+                return new clsAuthors(AuthorID, FullName, DateOfBirth, Nationality, ContactInfo, ImagePath);
+            }
+            else
+            {
+                return null;
+            }
+        }
         private bool _AddNewAuthor()
         {
             this.AuthorsID = clsAuthorsData.AddNewAuthor(this.FullName, this.DateOfBirth,
@@ -56,6 +71,14 @@ namespace LibraryBussinessLayer
 
             return this.AuthorsID != -1;
         }
+
+        //private bool _UpdateAuthor()
+        //{
+        //    if(clsAuthors.Find(this.AuthorsID) != null)
+        //    {
+
+        //    }
+        //}
 
         public bool Save()
         {

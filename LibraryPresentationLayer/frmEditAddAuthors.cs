@@ -50,11 +50,19 @@ namespace LibraryPresentationLayer
                 return;
             }
 
+            _Author = clsAuthors.Find(_AuthorID);
+            if(_Author == null)
+            {
+                MessageBox.Show("Author Not Found");
+                this.Close();
+                return;  
+            }
+
             lblAddEditAuthors.Text = "Edit Author With ID =  " + _AuthorID.ToString();
             txtFullName.Text = _Author.FullName;
             dateTimePicker1.Value = _Author.DateOfBirth;
             txtNationality.Text = _Author.Nationality;
-            
+
         }
 
         private void btnSave_Click(object sender, EventArgs e)

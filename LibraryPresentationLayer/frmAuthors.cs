@@ -34,5 +34,13 @@ namespace LibraryPresentationLayer
             frm.OnBookSaved += _RefreshAuthors;
             frm.ShowDialog();
         }
+
+        private void editToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            int ID = (int)dataGridView1.CurrentRow.Cells[0].Value;
+            frmEditAddAuthors frm = new frmEditAddAuthors(ID);
+            frm.OnBookSaved += _RefreshAuthors;
+            frm.ShowDialog();
+        }
     }
 }

@@ -102,5 +102,44 @@ namespace LibraryDataAccessLayer
             return ID;
         }
 
+        public static bool FindByID(int AuthorID, ref string FullName, ref DateTime DateOfBirth,
+             ref string Nationality, ref string ContactInfo, ref string ImagePath)
+        {
+            bool IsFound = false;
+
+            SqlConnection connection = new SqlConnection(clsDataAccessSetting.ConnectionString);
+            string Query = "SELECT * FROM Authors WHERE AuthorID = @AuthorID";
+
+            using (SqlCommand command = new SqlCommand(Query, connection))
+            {
+                command.Parameters.AddWithValue("@AuthorID", AuthorID);
+
+                try
+                {
+                    connection.Open();
+                    SqlDataReader reader = command.ExecuteReader();
+                    if (reader.Read())
+                    {
+                        // no nulls allowed here
+                        FullName = (string)reader["FullName"];
+                        DateOfBirth = (DateTime)reader["DateOfBirth"];
+                        Nationality = (string)reader["Nationality"];
+
+                        // only these need null checks
+                        ContactInfo = reader["ContactInfo"] != DBNull.Value ? (string)reader["ContactInfo"] : "";
+                        ImagePath = reader["ImagePath"] != DBNull.Value ? (string)reader["ImagePath"] : "";
+
+                        IsFound = true;
+                    }
+                    reader.Close();
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
+            }
+            return IsFound;
+        }
+
     }
 }

@@ -28,9 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.btnAddAuthor = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.cmsAddEditAuthor = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.bookWroteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.cmsAddEditAuthor.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnAddAuthor
@@ -58,17 +64,48 @@
             this.dataGridView1.Size = new System.Drawing.Size(919, 363);
             this.dataGridView1.TabIndex = 2;
             // 
+            // cmsAddEditAuthor
+            // 
+            this.cmsAddEditAuthor.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.cmsAddEditAuthor.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.bookWroteToolStripMenuItem,
+            this.editToolStripMenuItem,
+            this.deleteToolStripMenuItem});
+            this.cmsAddEditAuthor.Name = "cmsAddEditAuthor";
+            this.cmsAddEditAuthor.Size = new System.Drawing.Size(158, 76);
+            // 
+            // bookWroteToolStripMenuItem
+            // 
+            this.bookWroteToolStripMenuItem.Name = "bookWroteToolStripMenuItem";
+            this.bookWroteToolStripMenuItem.Size = new System.Drawing.Size(210, 24);
+            this.bookWroteToolStripMenuItem.Text = "Book Wrote";
+            // 
+            // editToolStripMenuItem
+            // 
+            this.editToolStripMenuItem.Name = "editToolStripMenuItem";
+            this.editToolStripMenuItem.Size = new System.Drawing.Size(210, 24);
+            this.editToolStripMenuItem.Text = "Edit";
+            this.editToolStripMenuItem.Click += new System.EventHandler(this.editToolStripMenuItem_Click);
+            // 
+            // deleteToolStripMenuItem
+            // 
+            this.deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
+            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(210, 24);
+            this.deleteToolStripMenuItem.Text = "Delete";
+            // 
             // frmAuthors
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(919, 483);
+            this.ContextMenuStrip = this.cmsAddEditAuthor;
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.btnAddAuthor);
             this.Name = "frmAuthors";
             this.Text = "frmAuthors";
             this.Load += new System.EventHandler(this.frmAuthors_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.cmsAddEditAuthor.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -76,5 +113,9 @@
         #endregion
         private System.Windows.Forms.Button btnAddAuthor;
         private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.ContextMenuStrip cmsAddEditAuthor;
+        private System.Windows.Forms.ToolStripMenuItem bookWroteToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem editToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem deleteToolStripMenuItem;
     }
 }
