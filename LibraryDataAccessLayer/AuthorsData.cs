@@ -141,5 +141,51 @@ namespace LibraryDataAccessLayer
             return IsFound;
         }
 
+        public static bool UpdateAuthor(int AuthorID, string FullName, DateTime DateOfBirth,
+                                        string Nationality, string ContactInfo, string ImagePath)
+        {
+            int rowsAffected = 0;
+
+            using (SqlConnection connection = new SqlConnection(clsDataAccessSetting.ConnectionString))
+            {
+                string Query = @"
+                                UPDATE [dbo].[Authors]
+                                SET [FullName] = @FullName,
+                                    [DateOfBirth] = @DateOfBirth,
+                                    [Nationality] = @Nationality,
+                                    [ContactInfo] = @ContactInfo,
+                                    [ImagePath] = @ImagePath
+                                WHERE AuthorID = @AuthorID";
+
+                SqlCommand command = new SqlCommand(Query, connection);
+
+                command.Parameters.AddWithValue("@AuthorID", AuthorID);
+                command.Parameters.AddWithValue("@FullName", FullName);
+                command.Parameters.AddWithValue("@DateOfBirth", DateOfBirth);
+                command.Parameters.AddWithValue("@Nationality", Nationality);
+
+                // Handle ContactInfo
+                command.Parameters.AddWithValue("@ContactInfo",
+                    string.IsNullOrEmpty(ContactInfo) ? (object)DBNull.Value : ContactInfo);
+
+                // Handle ImagePath
+                command.Parameters.AddWithValue("@ImagePath",
+                    string.IsNullOrEmpty(ImagePath) ? (object)DBNull.Value : ImagePath);
+
+                try
+                {
+                    connection.Open();
+                    rowsAffected = command.ExecuteNonQuery();
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("Error in UpdateAuthor: " + ex.Message);
+                }
+            }
+
+            return rowsAffected > 0;
+        }
+
+
     }
 }

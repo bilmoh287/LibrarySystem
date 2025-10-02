@@ -72,13 +72,18 @@ namespace LibraryBussinessLayer
             return this.AuthorsID != -1;
         }
 
-        //private bool _UpdateAuthor()
-        //{
-        //    if(clsAuthors.Find(this.AuthorsID) != null)
-        //    {
-
-        //    }
-        //}
+        private bool _UpdateAuthor()
+        {
+            if (clsAuthors.Find(this.AuthorsID) != null)
+            {
+                return clsAuthorsData.UpdateAuthor(this.AuthorsID, this.FullName, this.DateOfBirth,
+                    this.Nationality, this.ContactInfo, this.ImagePath);
+            }
+            else
+            {
+                return false;
+            }
+        }
 
         public bool Save()
         {
@@ -94,6 +99,8 @@ namespace LibraryBussinessLayer
                     {
                         return false;
                     }
+                case enMode.UpdateMode:
+                    return _UpdateAuthor();
             }
             return false;
         }
