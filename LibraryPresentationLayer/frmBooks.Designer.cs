@@ -36,6 +36,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.txtSearch = new System.Windows.Forms.TextBox();
             this.btnAddBooks = new System.Windows.Forms.Button();
+            this.authorsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.dgvListBooks)).BeginInit();
             this.cmnBooks.SuspendLayout();
             this.SuspendLayout();
@@ -60,10 +61,11 @@
             // 
             this.cmnBooks.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.cmnBooks.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.authorsToolStripMenuItem,
             this.editToolStripMenuItem,
             this.deleteToolStripMenuItem});
             this.cmnBooks.Name = "cmnBooks";
-            this.cmnBooks.Size = new System.Drawing.Size(211, 80);
+            this.cmnBooks.Size = new System.Drawing.Size(211, 104);
             // 
             // editToolStripMenuItem
             // 
@@ -108,6 +110,13 @@
             this.btnAddBooks.UseVisualStyleBackColor = true;
             this.btnAddBooks.Click += new System.EventHandler(this.btnAddBooks_Click);
             // 
+            // authorsToolStripMenuItem
+            // 
+            this.authorsToolStripMenuItem.Name = "authorsToolStripMenuItem";
+            this.authorsToolStripMenuItem.Size = new System.Drawing.Size(210, 24);
+            this.authorsToolStripMenuItem.Text = "Author(s)";
+            this.authorsToolStripMenuItem.Click += new System.EventHandler(this.authorsToolStripMenuItem_Click);
+            // 
             // frmBooks
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -136,5 +145,6 @@
         private System.Windows.Forms.ToolStripMenuItem editToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem deleteToolStripMenuItem;
         private System.Windows.Forms.Button btnAddBooks;
+        private System.Windows.Forms.ToolStripMenuItem authorsToolStripMenuItem;
     }
 }

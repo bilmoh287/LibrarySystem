@@ -88,5 +88,12 @@ namespace LibraryPresentationLayer
             }
 
         }
+
+        private void authorsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            int BookID = (int)dgvListBooks.CurrentRow.Cells[0].Value;
+            frmAuthorWhoWroteTheBook frm = new frmAuthorWhoWroteTheBook(BookID);
+            frm.ShowDialog();
+        }
     }
 }
