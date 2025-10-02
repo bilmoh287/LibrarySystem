@@ -62,6 +62,7 @@ namespace LibraryPresentationLayer
             txtFullName.Text = _Author.FullName;
             dateTimePicker1.Value = _Author.DateOfBirth;
             txtNationality.Text = _Author.Nationality;
+            txtContactInfo.Text = _Author.ContactInfo;
 
         }
 
