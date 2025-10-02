@@ -85,6 +85,11 @@ namespace LibraryBussinessLayer
             }
         }
 
+        public static bool DeleteAuthor(int AuthorID)
+        {
+            return clsAuthorsData.DeleteAuthor(AuthorID);
+        }
+
         public bool Save()
         {
             switch (_Mode)

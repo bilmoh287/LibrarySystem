@@ -186,6 +186,32 @@ namespace LibraryDataAccessLayer
             return rowsAffected > 0;
         }
 
+        public static bool DeleteAuthor(int AuthorID)
+        {
+            bool IsDeleted = false;
 
+            SqlConnection connection = new SqlConnection(clsDataAccessSetting.ConnectionString);
+            string Query = "DELETE FROM Authors WHERE AuthorID = @AuthorID";
+
+            using (SqlCommand command = new SqlCommand(Query, connection))
+            {
+                command.Parameters.AddWithValue("@AuthorID", AuthorID);
+
+                try
+                {
+                    connection.Open();
+                    int rowsaffected = command.ExecuteNonQuery();
+                    if (rowsaffected > 0)
+                    {
+                        IsDeleted = true;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
+            }
+            return IsDeleted;
+        }
     }
 }

@@ -72,7 +72,7 @@
             this.editToolStripMenuItem,
             this.deleteToolStripMenuItem});
             this.cmsAddEditAuthor.Name = "cmsAddEditAuthor";
-            this.cmsAddEditAuthor.Size = new System.Drawing.Size(158, 76);
+            this.cmsAddEditAuthor.Size = new System.Drawing.Size(211, 104);
             // 
             // bookWroteToolStripMenuItem
             // 
@@ -92,6 +92,7 @@
             this.deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
             this.deleteToolStripMenuItem.Size = new System.Drawing.Size(210, 24);
             this.deleteToolStripMenuItem.Text = "Delete";
+            this.deleteToolStripMenuItem.Click += new System.EventHandler(this.deleteToolStripMenuItem_Click);
             // 
             // frmAuthors
             // 
