@@ -82,6 +82,18 @@
     <Compile Include="frmBooks.Designer.cs">
       <DependentUpon>frmBooks.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmMyLibrary.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMyLibrary.Designer.cs">
+      <DependentUpon>frmMyLibrary.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmBorrowReturnBooks.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmBorrowReturnBooks.Designer.cs">
+      <DependentUpon>frmBorrowReturnBooks.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmEditAddAuthors.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -119,6 +131,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmBooks.resx">
       <DependentUpon>frmBooks.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMyLibrary.resx">
+      <DependentUpon>frmMyLibrary.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmBorrowReturnBooks.resx">
+      <DependentUpon>frmBorrowReturnBooks.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmEditAddAuthors.resx">
       <DependentUpon>frmEditAddAuthors.cs</DependentUpon>

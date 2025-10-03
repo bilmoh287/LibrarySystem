@@ -76,6 +76,7 @@
             this.btnBorrowReturn.TabIndex = 3;
             this.btnBorrowReturn.Text = "Borrow/Return Books";
             this.btnBorrowReturn.UseVisualStyleBackColor = true;
+            this.btnBorrowReturn.Click += new System.EventHandler(this.btnBorrowReturn_Click);
             // 
             // frmMainMenu
             // 

@@ -34,5 +34,11 @@ namespace LibraryPresentationLayer
             frmUsers frm = new frmUsers();
             frm.ShowDialog();
         }
+
+        private void btnBorrowReturn_Click(object sender, EventArgs e)
+        {
+            frmBorrowReturnBooks frm = new frmBorrowReturnBooks();
+            frm.ShowDialog();
+        }
     }
 }
