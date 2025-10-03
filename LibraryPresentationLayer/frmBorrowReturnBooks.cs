@@ -49,5 +49,11 @@ namespace LibraryPresentationLayer
                 }
             }
         }
+
+        private void btnMyLibrary_Click(object sender, EventArgs e)
+        {
+            frmMyLibrary frm = new frmMyLibrary();
+            frm.ShowDialog();
+        }
     }
 }

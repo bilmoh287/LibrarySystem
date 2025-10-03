@@ -44,6 +44,11 @@ namespace LibraryBussinessLayer
             _Mode = enMode.UpdateLib;
         }
 
+        public static DataTable GetAllBorrowedBooksList()
+        {
+            return clsBorrowingLibData.GetAllBorrowedBooks();
+        }
+
         public bool _BorrowNewBook()
         {
             return clsBorrowingLibData.AddNewLibrary(this.BookID, this.UserID, this.BorrowingDate, 

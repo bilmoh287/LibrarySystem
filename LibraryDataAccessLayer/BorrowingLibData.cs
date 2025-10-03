@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
@@ -62,6 +63,40 @@ namespace LibraryDataAccessLayer
             }
 
             return NewID;
+        }
+
+        public static DataTable GetAllBorrowedBooks()
+        {
+            DataTable drBorrowedBooks = new DataTable();
+
+            SqlConnection connection = new SqlConnection(clsDataAccessSetting.ConnectionString);
+
+            string Query = @"SELECT Borrowing.BorrowingID, Users.Username, Books.Title AS BookTitle, Books.ISBN, 
+	                               Borrowing.BorrowingDate, Borrowing.DueDate
+                            FROM     Users INNER JOIN
+                                              Borrowing ON Users.UserID = Borrowing.UserID INNER JOIN
+                                              Books ON Borrowing.CopyID = Books.BookID";
+
+            SqlCommand command = new SqlCommand(Query, connection);
+
+            try
+            {
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader();
+                if (reader.HasRows)
+                {
+                    drBorrowedBooks.Load(reader);
+                }
+
+                reader.Close();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            finally { connection.Close(); }
+
+            return drBorrowedBooks;
         }
     }
 }

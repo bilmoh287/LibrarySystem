@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using LibraryBussinessLayer;
 
 namespace LibraryPresentationLayer
 {
@@ -17,9 +18,19 @@ namespace LibraryPresentationLayer
             InitializeComponent();
         }
 
-        private void label1_Click(object sender, EventArgs e)
+        private void _RefreshList()
         {
+            dgvListBorrowedBooks.DataSource = clsBorrowingLibrary.GetAllBorrowedBooksList();
+        }
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void frmMyLibrary_Load(object sender, EventArgs e)
+        {
+            _RefreshList();
         }
     }
 }

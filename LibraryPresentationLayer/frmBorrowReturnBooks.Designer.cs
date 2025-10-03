@@ -61,7 +61,7 @@
             this.cmsBorrow.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.borrowToolStripMenuItem});
             this.cmsBorrow.Name = "cmsBorrow";
-            this.cmsBorrow.Size = new System.Drawing.Size(211, 56);
+            this.cmsBorrow.Size = new System.Drawing.Size(127, 28);
             // 
             // borrowToolStripMenuItem
             // 
@@ -97,6 +97,7 @@
             this.btnMyLibrary.TabIndex = 4;
             this.btnMyLibrary.Text = "My Library";
             this.btnMyLibrary.UseVisualStyleBackColor = true;
+            this.btnMyLibrary.Click += new System.EventHandler(this.btnMyLibrary_Click);
             // 
             // frmBorrowReturnBooks
             // 
