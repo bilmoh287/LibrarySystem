@@ -28,5 +28,11 @@ namespace LibraryPresentationLayer
             frmAuthors frm = new frmAuthors();
             frm.ShowDialog();
         }
+
+        private void btnManageUsers_Click(object sender, EventArgs e)
+        {
+            frmUsers frm = new frmUsers();
+            frm.ShowDialog();
+        }
     }
 }
