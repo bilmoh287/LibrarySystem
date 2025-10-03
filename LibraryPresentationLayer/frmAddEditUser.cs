@@ -39,8 +39,10 @@ namespace LibraryPresentationLayer
                                   .Replace(" ", "")      // remove spaces
                                   .Replace("/", "");     // remove slash
 
+                //convert stting item name to enum value
                 if (Enum.TryParse(itemText, out clsUsers.Permissions perm))
                 {
+                    //checking 
                     if ((_User.Permission & (int)perm) == (int)perm)
                     {
                         cklbPermission.SetItemChecked(i, true);
@@ -95,8 +97,10 @@ namespace LibraryPresentationLayer
                                       .Replace(" ", "")
                                       .Replace("/", "");
 
+                //convert stting item name to enum value
                 if (Enum.TryParse(itemText, out clsUsers.Permissions perm))
                 {
+                    //combine to one int number
                     selectedPermissions |= (int)perm;
                 }
             }
