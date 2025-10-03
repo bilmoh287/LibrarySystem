@@ -59,13 +59,14 @@
             this.cmdReturn.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.returnBookToolStripMenuItem});
             this.cmdReturn.Name = "cmdReturn";
-            this.cmdReturn.Size = new System.Drawing.Size(160, 28);
+            this.cmdReturn.Size = new System.Drawing.Size(211, 56);
             // 
             // returnBookToolStripMenuItem
             // 
             this.returnBookToolStripMenuItem.Name = "returnBookToolStripMenuItem";
-            this.returnBookToolStripMenuItem.Size = new System.Drawing.Size(159, 24);
+            this.returnBookToolStripMenuItem.Size = new System.Drawing.Size(210, 24);
             this.returnBookToolStripMenuItem.Text = "Return Book";
+            this.returnBookToolStripMenuItem.Click += new System.EventHandler(this.returnBookToolStripMenuItem_Click);
             // 
             // button1
             // 

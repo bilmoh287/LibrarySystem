@@ -75,7 +75,8 @@ namespace LibraryDataAccessLayer
 	                               Borrowing.BorrowingDate, Borrowing.DueDate
                             FROM     Users INNER JOIN
                                               Borrowing ON Users.UserID = Borrowing.UserID INNER JOIN
-                                              Books ON Borrowing.CopyID = Books.BookID";
+                                              Books ON Borrowing.CopyID = Books.BookID
+                            WHERE Borrowing.ActualReturnDate IS NULL;";
 
             SqlCommand command = new SqlCommand(Query, connection);
 
@@ -98,5 +99,34 @@ namespace LibraryDataAccessLayer
 
             return drBorrowedBooks;
         }
+
+        public static bool ReturnBook(int borrowingID)
+        {
+            using (SqlConnection connection = new SqlConnection(clsDataAccessSetting.ConnectionString))
+            {
+                string Query = @"
+                                UPDATE [dbo].[Borrowing]
+                                SET ActualReturnDate = @ReturnDate
+                                WHERE BorrowingID = @BorrowingID";
+
+                using (SqlCommand command = new SqlCommand(Query, connection))
+                {
+                    command.Parameters.AddWithValue("@ReturnDate", DateTime.Now);
+                    command.Parameters.AddWithValue("@BorrowingID", borrowingID);
+
+                    try
+                    {
+                        connection.Open();
+                        return command.ExecuteNonQuery() > 0;
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine("Error in ReturnBook: " + ex.Message);
+                        return false;
+                    }
+                }
+            }
+        }
+
     }
 }

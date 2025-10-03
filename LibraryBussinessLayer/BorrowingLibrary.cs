@@ -54,6 +54,11 @@ namespace LibraryBussinessLayer
             return clsBorrowingLibData.AddNewLibrary(this.BookID, this.UserID, this.BorrowingDate, 
                 this.DueDate, this.ActualReturnDate) !=  this.BorrowingID;
         }
+
+        public static bool ReturnBook(int BookID)
+        {
+            return clsBorrowingLibData.ReturnBook(BookID);
+        }
         public bool Save()
         {
             switch(_Mode)

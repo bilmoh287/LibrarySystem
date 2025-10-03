@@ -32,5 +32,16 @@ namespace LibraryPresentationLayer
         {
             _RefreshList();
         }
+
+        private void returnBookToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            int BookID = (int)dgvListBorrowedBooks.CurrentRow.Cells[0].Value;
+            if(clsBorrowingLibrary.ReturnBook(BookID))
+            {
+                MessageBox.Show("Payment Method will be here soon😁");
+                _RefreshList();
+            }
+
+        }
     }
 }
