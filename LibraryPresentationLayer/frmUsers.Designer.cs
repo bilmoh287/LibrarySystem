@@ -52,7 +52,7 @@
             this.dgvUsers.ReadOnly = true;
             this.dgvUsers.RowHeadersWidth = 51;
             this.dgvUsers.RowTemplate.Height = 24;
-            this.dgvUsers.Size = new System.Drawing.Size(874, 358);
+            this.dgvUsers.Size = new System.Drawing.Size(1130, 358);
             this.dgvUsers.TabIndex = 0;
             // 
             // cmsEditDelete
@@ -67,8 +67,9 @@
             // editToolStripMenuItem
             // 
             this.editToolStripMenuItem.Name = "editToolStripMenuItem";
-            this.editToolStripMenuItem.Size = new System.Drawing.Size(122, 24);
+            this.editToolStripMenuItem.Size = new System.Drawing.Size(210, 24);
             this.editToolStripMenuItem.Text = "Edit";
+            this.editToolStripMenuItem.Click += new System.EventHandler(this.editToolStripMenuItem_Click);
             // 
             // deleteToolStripMenuItem
             // 
@@ -95,12 +96,13 @@
             this.btnAddNewUser.TabIndex = 2;
             this.btnAddNewUser.Text = "Add New User";
             this.btnAddNewUser.UseVisualStyleBackColor = true;
+            this.btnAddNewUser.Click += new System.EventHandler(this.btnAddNewUser_Click);
             // 
             // frmUsers
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(874, 450);
+            this.ClientSize = new System.Drawing.Size(1130, 450);
             this.Controls.Add(this.btnAddNewUser);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.dgvUsers);

@@ -40,7 +40,7 @@ namespace LibraryDataAccessLayer
             return dtAuthors;
         }
 
-        public static int AddNewUser(string FullName, DateTime DateOfBirth, string ContactInfo, int Permission)
+        public static int AddNewUser(string FullName, DateTime DateOfBirth, string ContactInfo, int Permission, string Username, string Password)
         {
             int NewID = -1;
             string _LibraryCard = "";
@@ -53,12 +53,16 @@ namespace LibraryDataAccessLayer
                                         ([FullName]
                                         ,[DateOfBirth]
                                         ,[ContactInfo]
-                                        ,[Permission])
+                                        ,[Permission]
+                                        ,[Username]
+                                        ,[Password])
                                   VALUES
                                         (@FullName
                                         ,@DateOfBirth
                                         ,@ContactInfo
-                                        ,@Permission);
+                                        ,@Permission
+                                        ,@Username
+                                        ,@Password);
                             SELECT SCOPE_IDENTITY();";
 
                 using (SqlCommand command = new SqlCommand(Query, connection))
@@ -73,6 +77,9 @@ namespace LibraryDataAccessLayer
                         command.Parameters.AddWithValue("@ContactInfo", System.DBNull.Value);
 
                     command.Parameters.AddWithValue("@Permission", Permission);
+                    command.Parameters.AddWithValue("@Username", Username);
+                    command.Parameters.AddWithValue("@Password", Password);
+
                     try
                     {
                         connection.Open();
@@ -82,18 +89,16 @@ namespace LibraryDataAccessLayer
                         if (result != null && int.TryParse(result.ToString(), out int InsertedID))
                         {
                             NewID = InsertedID;
-                            _LibraryCard = "lib" + InsertedID.ToString("D4");
+                            _LibraryCard = "LIB" + InsertedID.ToString("D4");
 
                             //Update LibraryCardNumber;
-                            SqlCommand Updatecmd = new SqlCommand(@"UPDATE Users SET LibraryCardNumber = @Card
-                                WHERE UserID = @UserID;", connection);
-
-                            Updatecmd.Parameters.AddWithValue("@Card", _LibraryCard);
-                            Updatecmd.Parameters.AddWithValue("@UserID", NewID);
-
-                            Updatecmd.ExecuteNonQuery();
-
-
+                            using (SqlCommand Updatecmd = new SqlCommand(@"UPDATE Users SET LibraryCardNumber = @Card
+                                WHERE UserID = @UserID;", connection))
+                            {
+                                Updatecmd.Parameters.AddWithValue("@Card", _LibraryCard);
+                                Updatecmd.Parameters.AddWithValue("@UserID", NewID);
+                                Updatecmd.ExecuteNonQuery();
+                            }
                         }
                     }
                     catch (Exception ex)
@@ -101,14 +106,14 @@ namespace LibraryDataAccessLayer
                         // Log the error message
                         Console.WriteLine("Error in AddNewUser: " + ex.Message);
                     }
-                } // SqlCommand is disposed here
-            } // SqlConnection is closed and disposed here
+                }
+            }
 
             return NewID;
         }
 
         public static bool FindByID(int AuthorID, ref string FullName, ref DateTime DateOfBirth,
-              ref string ContactInfo, ref string LibraryCard, ref int Permission)
+              ref string ContactInfo, ref string LibraryCard, ref int Permission, ref string Username, ref string Password)
         {
             bool IsFound = false;
 
@@ -129,6 +134,8 @@ namespace LibraryDataAccessLayer
                         FullName = (string)reader["FullName"];
                         DateOfBirth = (DateTime)reader["DateOfBirth"];
                         Permission = (int)reader["Permission"];
+                        Username = (string)reader["Username"];
+                        Password = (string)reader["Password"];
 
                         // only these need null checks
                         ContactInfo = reader["ContactInfo"] != DBNull.Value ? (string)reader["ContactInfo"] : "";
@@ -147,7 +154,7 @@ namespace LibraryDataAccessLayer
         }
 
         public static bool UpdateUser(int UserID, string FullName, DateTime DateOfBirth,
-                                      string ContactInfo, int Permission)
+                                      string ContactInfo, int Permission, string Username, string Password)
         {
             int rowsAffected = 0;
 
@@ -158,7 +165,9 @@ namespace LibraryDataAccessLayer
                             SET [FullName] = @FullName,
                                 [DateOfBirth] = @DateOfBirth,
                                 [ContactInfo] = @ContactInfo,
-                                [Permission] = @Permission
+                                [Permission] = @Permission,                                
+                                [Username] = @Username,
+                                [Password] = @Password
                             WHERE UserID = @UserID";
 
                 using (SqlCommand command = new SqlCommand(Query, connection))
@@ -167,6 +176,8 @@ namespace LibraryDataAccessLayer
                     command.Parameters.AddWithValue("@FullName", FullName);
                     command.Parameters.AddWithValue("@DateOfBirth", DateOfBirth);
                     command.Parameters.AddWithValue("@Permission", Permission);
+                    command.Parameters.AddWithValue("@Username", Username);
+                    command.Parameters.AddWithValue("@Password", Password);
                     command.Parameters.AddWithValue("@ContactInfo",
                         string.IsNullOrEmpty(ContactInfo) ? (object)DBNull.Value : ContactInfo);
 
