@@ -31,7 +31,7 @@ namespace LibraryPresentationLayer
 
         private void btnAddAuthor_Click(object sender, EventArgs e)
         {
-            frmEditAddAuthors frm = new frmEditAddAuthors(-1);
+            frmAddEditAuthors frm = new frmAddEditAuthors(-1);
             frm.OnBookSaved += _RefreshAuthors;
             frm.ShowDialog();
         }
@@ -39,7 +39,7 @@ namespace LibraryPresentationLayer
         private void editToolStripMenuItem_Click(object sender, EventArgs e)
         {
             int ID = (int)dataGridView1.CurrentRow.Cells[0].Value;
-            frmEditAddAuthors frm = new frmEditAddAuthors(ID);
+            frmAddEditAuthors frm = new frmAddEditAuthors(ID);
             frm.OnBookSaved += _RefreshAuthors;
             frm.ShowDialog();
         }

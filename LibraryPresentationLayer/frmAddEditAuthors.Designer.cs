@@ -1,6 +1,6 @@
 ﻿namespace LibraryPresentationLayer
 {
-    partial class frmEditAddAuthors
+    partial class frmAddEditAuthors
     {
         /// <summary>
         /// Required designer variable.

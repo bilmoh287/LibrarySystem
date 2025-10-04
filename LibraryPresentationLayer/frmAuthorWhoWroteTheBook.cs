@@ -22,7 +22,7 @@ namespace LibraryPresentationLayer
 
         private void frmAuthorWhoWroteTheBook_Load(object sender, EventArgs e)
         {
-            dgvAuthors.DataSource = clsBooks.GetAllAuthorWhoWroteTheBook(_BookID);
+            dgvAuthors.DataSource = clsBookAuthor.GetAllAuthorWhoWroteTheBook(_BookID);
         }
 
         private void btnClose_Click(object sender, EventArgs e)

@@ -11,7 +11,7 @@ using LibraryBussinessLayer;
 
 namespace LibraryPresentationLayer
 {
-    public partial class frmEditAddAuthors : Form
+    public partial class frmAddEditAuthors : Form
     {
         public delegate void BookSavedHandler();
         public event BookSavedHandler OnBookSaved;
@@ -21,7 +21,7 @@ namespace LibraryPresentationLayer
 
         int _AuthorID;
         clsAuthors _Author;
-        public frmEditAddAuthors(int ID)
+        public frmAddEditAuthors(int ID)
         {
             InitializeComponent();
 

@@ -109,10 +109,5 @@ namespace LibraryBussinessLayer
             return false;
         }
 
-        public static DataTable GetAllBooksWrittenByAuthor(int AuthorID)
-        {
-            return clsAuthorsData.GetAllBooksWrittenByAuthor(AuthorID);
-        }
-
     }
 }

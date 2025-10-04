@@ -236,37 +236,5 @@ namespace LibraryDataAccessLayer
             return IsDeleted;
         }
 
-        public static DataTable GetAllBooksWrittenByAuthor(int BookID)
-        {
-            DataTable dtAuthors = new DataTable();
-
-            SqlConnection connection = new SqlConnection(clsDataAccessSetting.ConnectionString);
-            string Query = @"
-                            SELECT Authors.FullName, Authors.DateOfBirth, Authors.Nationality, Authors.ContactInfo, Authors.ImagePath
-                            FROM     Authors INNER JOIN
-                                              BookAuthors ON Authors.AuthorID = BookAuthors.AuthorID
-                            WHERE BookAuthors.BookID = @BookID";
-
-            using (SqlCommand command = new SqlCommand(Query, connection))
-            {
-                command.Parameters.AddWithValue("@BookID", BookID);
-
-                try
-                {
-                    connection.Open();
-                    SqlDataReader reader = command.ExecuteReader();
-
-                    if (reader.HasRows)
-                    {
-                        dtAuthors.Load(reader);
-                    }
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine(ex.Message);
-                }
-            }
-            return dtAuthors;
-        }
     }
 }

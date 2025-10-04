@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Security.AccessControl;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -44,9 +45,23 @@ namespace LibraryPresentationLayer
             {
                 if(_Mode == enMode.AddNewMode)
                 {
-                    frmAuthorToChoose frm = new frmAuthorToChoose(_Book.);
-                    frm.ShowDialog();
+                    frmAuthorToChoose frm = new frmAuthorToChoose(_Book.ID);
+                    if (frm.ShowDialog() == DialogResult.OK)
+                    {
+                        MessageBox.Show("Book added Successfully.");
+                        //Refreshing the Books List after Adding
+                        OnBookSaved?.Invoke();
+                        return;
+                    }
+                    else
+                    {
+                        // rollback
+                        clsBooks.DeleteBook(_Book.ID);
+                        MessageBox.Show("Book was not saved because no authors were chosen.");
+                        return;
+                    }
                 }
+
                 MessageBox.Show("Data Saved Successfully.");
                 OnBookSaved?.Invoke();
             }

@@ -116,9 +116,5 @@ namespace LibraryBussinessLayer
             return clsBooksData.DeleteBook(ID);
         }
 
-        public static DataTable GetAllAuthorWhoWroteTheBook(int BookID)
-        {
-            return clsBooksData.GetAllBooksWrittenByAuthor(BookID);
-        }
     }
 }

@@ -27,7 +27,7 @@ namespace LibraryPresentationLayer
 
         private void frmBooksWrotedByAuthor_Load(object sender, EventArgs e)
         {
-            dgvBooks.DataSource = clsAuthors.GetAllBooksWrittenByAuthor(_AuthorID);
+            dgvBooks.DataSource = clsBookAuthor.GetAllBooksWrittenByAuthor(_AuthorID);
         }
     }
 }
