@@ -67,18 +67,18 @@ namespace LibraryDataAccessLayer
 
                 using (SqlCommand command = new SqlCommand(Query, connection))
                 {
-                    command.Parameters.AddWithValue("@FullName", FullName);
+                    command.Parameters.AddWithValue("@FullName", FullName.Trim());
                     command.Parameters.AddWithValue("@DateOfBirth", DateOfBirth);
 
                     // Handle ContactInfo (which is nullable/optional)
                     if (!string.IsNullOrEmpty(ContactInfo))
-                        command.Parameters.AddWithValue("@ContactInfo", ContactInfo);
+                        command.Parameters.AddWithValue("@ContactInfo", ContactInfo.Trim());
                     else
                         command.Parameters.AddWithValue("@ContactInfo", System.DBNull.Value);
 
                     command.Parameters.AddWithValue("@Permission", Permission);
-                    command.Parameters.AddWithValue("@Username", Username);
-                    command.Parameters.AddWithValue("@Password", Password);
+                    command.Parameters.AddWithValue("@Username", Username.Trim());
+                    command.Parameters.AddWithValue("@Password", Password.Trim());
 
                     try
                     {
@@ -173,13 +173,13 @@ namespace LibraryDataAccessLayer
                 using (SqlCommand command = new SqlCommand(Query, connection))
                 {
                     command.Parameters.AddWithValue("@UserID", UserID);
-                    command.Parameters.AddWithValue("@FullName", FullName);
+                    command.Parameters.AddWithValue("@FullName", FullName.Trim());
                     command.Parameters.AddWithValue("@DateOfBirth", DateOfBirth);
                     command.Parameters.AddWithValue("@Permission", Permission);
-                    command.Parameters.AddWithValue("@Username", Username);
-                    command.Parameters.AddWithValue("@Password", Password);
+                    command.Parameters.AddWithValue("@Username", Username.Trim());
+                    command.Parameters.AddWithValue("@Password", Password.Trim());
                     command.Parameters.AddWithValue("@ContactInfo",
-                        string.IsNullOrEmpty(ContactInfo) ? (object)DBNull.Value : ContactInfo);
+                        string.IsNullOrEmpty(ContactInfo) ? (object)DBNull.Value : ContactInfo.Trim());
 
                     try
                     {
