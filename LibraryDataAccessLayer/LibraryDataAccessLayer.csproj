@@ -44,6 +44,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AuthorsData.cs" />
+    <Compile Include="BookAuthorData.cs" />
     <Compile Include="BooksData.cs" />
     <Compile Include="BorrowingLibData.cs" />
     <Compile Include="clsDataAccessSetting.cs" />

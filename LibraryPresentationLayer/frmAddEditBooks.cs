@@ -42,6 +42,11 @@ namespace LibraryPresentationLayer
 
             if(_Book.Save())
             {
+                if(_Mode == enMode.AddNewMode)
+                {
+                    frmAuthorToChoose frm = new frmAuthorToChoose(_Book.);
+                    frm.ShowDialog();
+                }
                 MessageBox.Show("Data Saved Successfully.");
                 OnBookSaved?.Invoke();
             }

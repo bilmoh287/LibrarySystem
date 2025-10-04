@@ -49,7 +49,6 @@ namespace LibraryBussinessLayer
             return clsAuthorsData.GetAllAuthorsList();
         }
 
-
         public static clsAuthors Find(int AuthorID)
         {
             string FullName = "", Nationality = "", ContactInfo = "", ImagePath = "";
@@ -114,5 +113,6 @@ namespace LibraryBussinessLayer
         {
             return clsAuthorsData.GetAllBooksWrittenByAuthor(AuthorID);
         }
+
     }
 }
