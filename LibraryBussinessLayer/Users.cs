@@ -105,6 +105,22 @@ namespace LibraryBussinessLayer
             return clsUsersData.DeleteUser(UserID);
         }
 
+        public static clsUsers Login(string username, string password)
+        {
+            int ID = -1, Permission = 0;
+            string FullName = "", ContactInfo = "", LibraryCard = "", Username = "", Password = "";
+            DateTime DateOfBirth = DateTime.MinValue;
+
+            if (clsUsersData.FindByUsernameAndPassword(username, password, ref ID, ref FullName, ref DateOfBirth,
+                ref ContactInfo, ref LibraryCard, ref Permission, ref Username, ref Password))
+            {
+                return new clsUsers(ID, FullName, DateOfBirth, ContactInfo, LibraryCard, Permission, Username, Password);
+            }
+
+            return null; // login failed
+        }
+
+
         public bool Save()
         {
             switch (_Mode)

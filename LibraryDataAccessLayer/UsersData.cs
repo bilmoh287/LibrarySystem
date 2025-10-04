@@ -223,6 +223,49 @@ namespace LibraryDataAccessLayer
             return rowsAffected > 0;
         }
 
+        public static bool FindByUsernameAndPassword(string Username, string Password,
+            ref int UserID, ref string FullName, ref DateTime DateOfBirth, ref string ContactInfo,
+            ref string LibraryCard, ref int Permission, ref string UsernameOut, ref string PasswordOut)
+        {
+            bool IsFound = false;
+
+            using (SqlConnection connection = new SqlConnection(clsDataAccessSetting.ConnectionString))
+            {
+                string Query = @"SELECT * FROM Users WHERE Username = @Username AND Password = @Password";
+
+                using (SqlCommand command = new SqlCommand(Query, connection))
+                {
+                    command.Parameters.AddWithValue("@Username", Username);
+                    command.Parameters.AddWithValue("@Password", Password);
+
+                    try
+                    {
+                        connection.Open();
+                        SqlDataReader reader = command.ExecuteReader();
+
+                        if (reader.Read())
+                        {
+                            UserID = (int)reader["UserID"];
+                            FullName = (string)reader["FullName"];
+                            DateOfBirth = (DateTime)reader["DateOfBirth"];
+                            ContactInfo = reader["ContactInfo"] != DBNull.Value ? (string)reader["ContactInfo"] : "";
+                            LibraryCard = reader["LibraryCardNumber"] != DBNull.Value ? (string)reader["LibraryCardNumber"] : "";
+                            Permission = (int)reader["Permission"];
+                            UsernameOut = (string)reader["Username"];
+                            PasswordOut = (string)reader["Password"];
+                            IsFound = true;
+                        }
+                        reader.Close();
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine("Error in FindByUsernameAndPassword: " + ex.Message);
+                    }
+                }
+            }
+
+            return IsFound;
+        }
 
     }
 }
