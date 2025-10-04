@@ -13,8 +13,8 @@ namespace LibraryPresentationLayer
 {
     public partial class frmAddEditAuthors : Form
     {
-        public delegate void BookSavedHandler();
-        public event BookSavedHandler OnBookSaved;
+        public delegate void AuthorSavedHandler();
+        public event AuthorSavedHandler OnAuthorSaved;
 
         enum enMode { AddNewMode, UpdateMode };
         enMode _Mode;
@@ -59,6 +59,7 @@ namespace LibraryPresentationLayer
             }
 
             lblAddEditAuthors.Text = "Edit Author With ID =  " + _AuthorID.ToString();
+            lblAuthorsID.Text = _AuthorID.ToString();
             txtFullName.Text = _Author.FullName;
             dateTimePicker1.Value = _Author.DateOfBirth;
             txtNationality.Text = _Author.Nationality;
@@ -76,7 +77,7 @@ namespace LibraryPresentationLayer
             if (_Author.Save())
             {
                 MessageBox.Show("Data Saved Successfully.");
-                OnBookSaved?.Invoke();
+                OnAuthorSaved?.Invoke();
             }
             else
             {

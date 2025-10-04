@@ -32,7 +32,7 @@ namespace LibraryPresentationLayer
         private void btnAddAuthor_Click(object sender, EventArgs e)
         {
             frmAddEditAuthors frm = new frmAddEditAuthors(-1);
-            frm.OnBookSaved += _RefreshAuthors;
+            frm.OnAuthorSaved += _RefreshAuthors;
             frm.ShowDialog();
         }
 
@@ -40,7 +40,7 @@ namespace LibraryPresentationLayer
         {
             int ID = (int)dataGridView1.CurrentRow.Cells[0].Value;
             frmAddEditAuthors frm = new frmAddEditAuthors(ID);
-            frm.OnBookSaved += _RefreshAuthors;
+            frm.OnAuthorSaved += _RefreshAuthors;
             frm.ShowDialog();
         }
 

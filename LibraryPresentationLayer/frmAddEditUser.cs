@@ -14,8 +14,8 @@ namespace LibraryPresentationLayer
 {
     public partial class frmAddEditUser : Form
     {
-        public delegate void BookSavedHandler();
-        public event BookSavedHandler OnBookSaved;
+        public delegate void UserSavedHandler();
+        public event UserSavedHandler OnUserSaved;
 
         enum enMode { AddNewMode, UpdateMode };
         enMode _Mode;
@@ -111,7 +111,7 @@ namespace LibraryPresentationLayer
             if (_User.Save())
             {
                 MessageBox.Show("Data Saved Successfully.");
-                OnBookSaved?.Invoke();
+                OnUserSaved?.Invoke();
             }
             else
             {

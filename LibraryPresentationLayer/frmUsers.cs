@@ -32,14 +32,14 @@ namespace LibraryPresentationLayer
         {
             int ID = (int)dgvUsers.CurrentRow.Cells[0].Value;
             frmAddEditUser frm = new frmAddEditUser(ID);
-            frm.OnBookSaved += _RefreshUsers; // subscribe to event
+            frm.OnUserSaved += _RefreshUsers; // subscribe to event
             frm.ShowDialog();
         }
 
         private void btnAddNewUser_Click(object sender, EventArgs e)
         {
             frmAddEditUser frm = new frmAddEditUser(-1);
-            frm.OnBookSaved += _RefreshUsers; // subscribe to event
+            frm.OnUserSaved += _RefreshUsers; // subscribe to event
             frm.ShowDialog();
         }
     
