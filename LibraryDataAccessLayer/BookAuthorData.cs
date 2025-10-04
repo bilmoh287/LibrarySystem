@@ -44,7 +44,7 @@ namespace LibraryDataAccessLayer
 
             SqlConnection connection = new SqlConnection(clsDataAccessSetting.ConnectionString);
             string Query = @"
-                            SELECT Authors.FullName, Authors.DateOfBirth, Authors.Nationality, Authors.ContactInfo, Authors.ImagePath
+                            SELECT Authors.FullName, Authors.DateOfBirth, Authors.Nationality, Authors.ContactInfo
                             FROM     Authors INNER JOIN
                                               BookAuthors ON Authors.AuthorID = BookAuthors.AuthorID
                             WHERE BookAuthors.BookID = @BookID";
