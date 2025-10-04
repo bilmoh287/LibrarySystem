@@ -14,7 +14,7 @@ namespace LibraryDataAccessLayer
         {
             bool isAdded = false;
 
-            string query = "INSERT INTO BookAuthor (BookID, AuthorID) VALUES (@BookID, @AuthorID)";
+            string query = "INSERT INTO BookAuthors (BookID, AuthorID) VALUES (@BookID, @AuthorID)";
 
             using (SqlConnection connection = new SqlConnection(clsDataAccessSetting.ConnectionString))
             using (SqlCommand command = new SqlCommand(query, connection))
