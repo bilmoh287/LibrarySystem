@@ -120,6 +120,11 @@ namespace LibraryBussinessLayer
             return null; // login failed
         }
 
+        //Bitwise function to handle permission
+        public bool HasPermission(Permissions permission)
+        {
+            return (this.Permission & (int)permission) == (int)permission;
+        }
 
         public bool Save()
         {
