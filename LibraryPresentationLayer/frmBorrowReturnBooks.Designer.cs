@@ -35,6 +35,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.txtSearch = new System.Windows.Forms.TextBox();
             this.btnMyLibrary = new System.Windows.Forms.Button();
+            this.additionalInfoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.dgvListOfBooks)).BeginInit();
             this.cmsBorrow.SuspendLayout();
             this.SuspendLayout();
@@ -59,9 +60,10 @@
             // 
             this.cmsBorrow.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.cmsBorrow.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.additionalInfoToolStripMenuItem,
             this.borrowToolStripMenuItem});
             this.cmsBorrow.Name = "cmsBorrow";
-            this.cmsBorrow.Size = new System.Drawing.Size(127, 28);
+            this.cmsBorrow.Size = new System.Drawing.Size(211, 80);
             // 
             // borrowToolStripMenuItem
             // 
@@ -100,6 +102,12 @@
             this.btnMyLibrary.UseVisualStyleBackColor = true;
             this.btnMyLibrary.Click += new System.EventHandler(this.btnMyLibrary_Click);
             // 
+            // additionalInfoToolStripMenuItem
+            // 
+            this.additionalInfoToolStripMenuItem.Name = "additionalInfoToolStripMenuItem";
+            this.additionalInfoToolStripMenuItem.Size = new System.Drawing.Size(210, 24);
+            this.additionalInfoToolStripMenuItem.Text = "Additional Info";
+            // 
             // frmBorrowReturnBooks
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -127,5 +135,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtSearch;
         private System.Windows.Forms.Button btnMyLibrary;
+        private System.Windows.Forms.ToolStripMenuItem additionalInfoToolStripMenuItem;
     }
 }

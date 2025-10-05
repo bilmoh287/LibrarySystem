@@ -45,6 +45,16 @@ namespace LibraryBussinessLayer
             _Mode = enMode.UpdateLib;
         }
 
+        public static DataTable GetAllBooksList()
+        {
+            return clsBorrowingLibData.GetAllBooks();
+        }
+
+        public static string GetBorrowedBookAdditionalInfo(int BorrowingID)
+        {
+            return clsBorrowingLibData.GetBorrowedBookAdditionalInfo(BorrowingID);
+        }
+
         public static DataTable GetAllBorrowedBooksList(int UserID)
         {
             return clsBorrowingLibData.GetAllBorrowedBooks(UserID);

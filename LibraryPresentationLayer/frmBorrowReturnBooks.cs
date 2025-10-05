@@ -22,7 +22,7 @@ namespace LibraryPresentationLayer
         private void _RefreshBooks()
         {
             {
-                dgvListOfBooks.DataSource = clsBooks.GetAllBooks();
+                dgvListOfBooks.DataSource = clsBorrowingLibrary.GetAllBooksList();
             }
         }
 

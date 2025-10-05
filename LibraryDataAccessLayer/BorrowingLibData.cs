@@ -10,6 +10,71 @@ namespace LibraryDataAccessLayer
 {
     public class clsBorrowingLibData
     {
+        public static DataTable GetAllBooks()
+        {
+            DataTable dtbooks = new DataTable();
+
+            SqlConnection connection = new SqlConnection(clsDataAccessSetting.ConnectionString);
+
+            string Query = "SELECT BookID, Title, ISBN, PublicationDate, Genre FROM Books;";
+
+            SqlCommand command = new SqlCommand(Query, connection);
+
+            try
+            {
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader();
+                while (reader.HasRows)
+                {
+                    dtbooks.Load(reader);
+                }
+                reader.Close();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            finally { connection.Close(); }
+
+            return dtbooks;
+        }
+
+        public static string GetBorrowedBookAdditionalInfo(int BorrowingID)
+        {
+            string additionalInfo = "";
+
+            using (SqlConnection connection = new SqlConnection(clsDataAccessSetting.ConnectionString))
+            {
+                string Query = @"
+                                SELECT b.AdditionInfo
+                                FROM Borrowing br
+                                INNER JOIN Books b ON br.CopyID = b.BookID
+                                WHERE br.BorrowingID = @BorrowingID";
+
+                using (SqlCommand command = new SqlCommand(Query, connection))
+                {
+                    command.Parameters.AddWithValue("@BorrowingID", BorrowingID);
+
+                    try
+                    {
+                        connection.Open();
+                        object result = command.ExecuteScalar(); // returns first column of first row
+                        if (result != null && result != DBNull.Value)
+                        {
+                            additionalInfo = result.ToString();
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine("Error in GetBorrowedBookAdditionalInfo: " + ex.Message);
+                    }
+                }
+            }
+
+            return additionalInfo;
+        }
+
+
         public static int AddNewLibrary(int BookID, int UserID, DateTime BorrowingDate, DateTime DueDate, DateTime ActualReturnDate)
         {
             int NewID = -1;
