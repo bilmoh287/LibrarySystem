@@ -39,7 +39,7 @@ namespace LibraryDataAccessLayer
             return dtbooks;
         }
 
-        public static string GetBooksAddionalInfo(int BorrowingID)
+        public static string GetBooksAddionalInfo(int BookID)
         {
             string additionalInfo = "";
 
@@ -49,7 +49,7 @@ namespace LibraryDataAccessLayer
 
                 using (SqlCommand command = new SqlCommand(Query, connection))
                 {
-                    command.Parameters.AddWithValue("@BorrowingID", BorrowingID);
+                    command.Parameters.AddWithValue("@BookID", BookID);
 
                     try
                     {
