@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using LibraryBussinessLayer;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace LibraryPresentationLayer
 {
@@ -55,6 +56,20 @@ namespace LibraryPresentationLayer
         {
             frmMyLibrary frm = new frmMyLibrary();
             frm.ShowDialog();
+        }
+
+        private void txtSearch_TextChanged(object sender, EventArgs e)
+        {
+            string keyword = txtSearch.Text.Trim();
+            if (!string.IsNullOrEmpty(keyword))
+            {
+                dgvListOfBooks.DataSource = clsBooks.SearchBooks(keyword);
+            }
+            else
+            {
+                // Show all books if textbox is empty
+                dgvListOfBooks.DataSource = clsBooks.GetAllBooks();
+            }
         }
     }
 }

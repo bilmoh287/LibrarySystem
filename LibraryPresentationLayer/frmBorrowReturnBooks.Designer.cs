@@ -33,7 +33,7 @@
             this.cmsBorrow = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.borrowToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.label1 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtSearch = new System.Windows.Forms.TextBox();
             this.btnMyLibrary = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvListOfBooks)).BeginInit();
             this.cmsBorrow.SuspendLayout();
@@ -66,7 +66,7 @@
             // borrowToolStripMenuItem
             // 
             this.borrowToolStripMenuItem.Name = "borrowToolStripMenuItem";
-            this.borrowToolStripMenuItem.Size = new System.Drawing.Size(210, 24);
+            this.borrowToolStripMenuItem.Size = new System.Drawing.Size(126, 24);
             this.borrowToolStripMenuItem.Text = "Borrow";
             this.borrowToolStripMenuItem.Click += new System.EventHandler(this.borrowToolStripMenuItem_Click);
             // 
@@ -80,13 +80,14 @@
             this.label1.TabIndex = 2;
             this.label1.Text = "Search";
             // 
-            // textBox1
+            // txtSearch
             // 
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(86, 42);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(227, 28);
-            this.textBox1.TabIndex = 3;
+            this.txtSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSearch.Location = new System.Drawing.Point(86, 42);
+            this.txtSearch.Name = "txtSearch";
+            this.txtSearch.Size = new System.Drawing.Size(227, 28);
+            this.txtSearch.TabIndex = 3;
+            this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
             // 
             // btnMyLibrary
             // 
@@ -105,7 +106,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(987, 476);
             this.Controls.Add(this.btnMyLibrary);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txtSearch);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.dgvListOfBooks);
             this.Name = "frmBorrowReturnBooks";
@@ -124,7 +125,7 @@
         private System.Windows.Forms.ContextMenuStrip cmsBorrow;
         private System.Windows.Forms.ToolStripMenuItem borrowToolStripMenuItem;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtSearch;
         private System.Windows.Forms.Button btnMyLibrary;
     }
 }

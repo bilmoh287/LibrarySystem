@@ -116,5 +116,9 @@ namespace LibraryBussinessLayer
             return clsBooksData.DeleteBook(ID);
         }
 
+        public static DataTable SearchBooks(string keyword)
+        {
+            return clsBooksData.SearchBooksByTitle(keyword);
+        }
     }
 }

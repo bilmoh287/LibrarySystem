@@ -236,5 +236,40 @@ namespace LibraryDataAccessLayer
             return IsDeleted;
         }
 
+        public static DataTable SearchBooksByTitle(string keyword)
+        {
+            DataTable dtBooks = new DataTable();
+
+            using (SqlConnection connection = new SqlConnection(clsDataAccessSetting.ConnectionString))
+            {
+                string Query = @"
+            SELECT * 
+            FROM Books
+            WHERE Title LIKE @Keyword";
+
+                using (SqlCommand command = new SqlCommand(Query, connection))
+                {
+                    command.Parameters.AddWithValue("@Keyword", "%" + keyword + "%"); // wildcard
+
+                    try
+                    {
+                        connection.Open();
+                        SqlDataReader reader = command.ExecuteReader();
+                        if (reader.HasRows)
+                        {
+                            dtBooks.Load(reader);
+                        }
+                        reader.Close();
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine("Error in SearchBooksByTitle: " + ex.Message);
+                    }
+                }
+            }
+
+            return dtBooks;
+        }
+
     }
 }
