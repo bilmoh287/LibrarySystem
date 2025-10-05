@@ -52,6 +52,11 @@ namespace LibraryBussinessLayer
 
         public bool _BorrowNewBook()
         {
+            if(clsBorrowingLibData.IsBookAlreadyBorrowed(this.BookID, this.UserID))
+            {
+                // Book already borrowed
+                return false;
+            }
             return clsBorrowingLibData.AddNewLibrary(this.BookID, this.UserID, this.BorrowingDate, 
                 this.DueDate, this.ActualReturnDate) !=  this.BorrowingID;
         }

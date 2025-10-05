@@ -131,6 +131,36 @@ namespace LibraryDataAccessLayer
             }
         }
 
+        public static bool IsBookAlreadyBorrowed(int BookID, int UserID)
+        {
+            using (SqlConnection connection = new SqlConnection(clsDataAccessSetting.ConnectionString))
+            {
+                string Query = @"
+                                SELECT COUNT(*) 
+                                FROM Borrowing
+                                WHERE CopyID = @BookID 
+                                  AND UserID = @UserID
+                                  AND ActualReturnDate IS NULL";
+
+                using (SqlCommand command = new SqlCommand(Query, connection))
+                {
+                    command.Parameters.AddWithValue("@BookID", BookID);
+                    command.Parameters.AddWithValue("@UserID", UserID);
+
+                    try
+                    {
+                        connection.Open();
+                        int count = (int)command.ExecuteScalar();
+                        return count > 0; // true if book is already borrowed
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine("Error in IsBookAlreadyBorrowed: " + ex.Message);
+                        return false;
+                    }
+                }
+            }
+        }
 
     }
 }
