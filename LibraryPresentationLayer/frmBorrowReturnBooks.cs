@@ -71,5 +71,12 @@ namespace LibraryPresentationLayer
                 dgvListOfBooks.DataSource = clsBooks.GetAllBooks();
             }
         }
+
+        private void additionalInfoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            int BookID = (int)dgvListOfBooks.CurrentRow.Cells[0].Value;
+            frmBookAdditionalInfo frm = new frmBookAdditionalInfo(BookID);
+            frm.ShowDialog();
+        }
     }
 }

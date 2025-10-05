@@ -53,7 +53,7 @@
             this.dgvListOfBooks.ReadOnly = true;
             this.dgvListOfBooks.RowHeadersWidth = 51;
             this.dgvListOfBooks.RowTemplate.Height = 24;
-            this.dgvListOfBooks.Size = new System.Drawing.Size(987, 376);
+            this.dgvListOfBooks.Size = new System.Drawing.Size(780, 376);
             this.dgvListOfBooks.TabIndex = 0;
             // 
             // cmsBorrow
@@ -94,7 +94,7 @@
             // btnMyLibrary
             // 
             this.btnMyLibrary.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnMyLibrary.Location = new System.Drawing.Point(713, 31);
+            this.btnMyLibrary.Location = new System.Drawing.Point(570, 42);
             this.btnMyLibrary.Name = "btnMyLibrary";
             this.btnMyLibrary.Size = new System.Drawing.Size(155, 48);
             this.btnMyLibrary.TabIndex = 4;
@@ -107,12 +107,13 @@
             this.additionalInfoToolStripMenuItem.Name = "additionalInfoToolStripMenuItem";
             this.additionalInfoToolStripMenuItem.Size = new System.Drawing.Size(210, 24);
             this.additionalInfoToolStripMenuItem.Text = "Additional Info";
+            this.additionalInfoToolStripMenuItem.Click += new System.EventHandler(this.additionalInfoToolStripMenuItem_Click);
             // 
             // frmBorrowReturnBooks
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(987, 476);
+            this.ClientSize = new System.Drawing.Size(780, 476);
             this.Controls.Add(this.btnMyLibrary);
             this.Controls.Add(this.txtSearch);
             this.Controls.Add(this.label1);
