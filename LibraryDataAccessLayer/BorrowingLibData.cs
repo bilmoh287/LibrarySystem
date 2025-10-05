@@ -65,7 +65,7 @@ namespace LibraryDataAccessLayer
             return NewID;
         }
 
-        public static DataTable GetAllBorrowedBooks()
+        public static DataTable GetAllBorrowedBooks(int UserID)
         {
             DataTable drBorrowedBooks = new DataTable();
 
@@ -76,9 +76,11 @@ namespace LibraryDataAccessLayer
                             FROM     Users INNER JOIN
                                               Borrowing ON Users.UserID = Borrowing.UserID INNER JOIN
                                               Books ON Borrowing.CopyID = Books.BookID
-                            WHERE Borrowing.ActualReturnDate IS NULL;";
+                            WHERE Borrowing.ActualReturnDate IS NULL AND Borrowing.BorrowingDate = 2;";
 
             SqlCommand command = new SqlCommand(Query, connection);
+
+            command.Parameters.AddWithValue("@UserID", UserID);
 
             try
             {

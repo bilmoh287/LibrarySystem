@@ -20,7 +20,7 @@ namespace LibraryPresentationLayer
 
         private void _RefreshList()
         {
-            dgvListBorrowedBooks.DataSource = clsBorrowingLibrary.GetAllBorrowedBooksList();
+            dgvListBorrowedBooks.DataSource = clsBorrowingLibrary.GetAllBorrowedBooksList(clsGlobalUser.CurrentUser.UserID);
         }
 
         private void button1_Click(object sender, EventArgs e)

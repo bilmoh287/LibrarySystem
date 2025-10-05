@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using LibraryDataAccessLayer;
@@ -20,14 +21,14 @@ namespace LibraryBussinessLayer
         public DateTime DueDate { set; get; }
         public DateTime ActualReturnDate { set; get; }
 
-        public clsBorrowingLibrary(int BookID)
+        public clsBorrowingLibrary(int BookID, int UserID)
         {
             this.BorrowingID = -1;
             this.BookID = BookID;
-            this.UserID = 1;
+            this.UserID = UserID; // ✅ Current logged-in user;
             this.BorrowingDate = DateTime.Now;
-            this.DueDate = DateTime.Now;
-            this.ActualReturnDate = DateTime.Now;
+            this.DueDate = DateTime.Now.AddDays(7); // Due date days
+            this.ActualReturnDate = DateTime.MinValue;
 
             _Mode = enMode.AddNewLib;
         }
@@ -44,9 +45,9 @@ namespace LibraryBussinessLayer
             _Mode = enMode.UpdateLib;
         }
 
-        public static DataTable GetAllBorrowedBooksList()
+        public static DataTable GetAllBorrowedBooksList(int UserID)
         {
-            return clsBorrowingLibData.GetAllBorrowedBooks();
+            return clsBorrowingLibData.GetAllBorrowedBooks(UserID);
         }
 
         public bool _BorrowNewBook()
