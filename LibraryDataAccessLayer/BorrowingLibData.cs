@@ -72,11 +72,12 @@ namespace LibraryDataAccessLayer
             SqlConnection connection = new SqlConnection(clsDataAccessSetting.ConnectionString);
 
             string Query = @"SELECT Borrowing.BorrowingID, Users.Username, Books.Title AS BookTitle, Books.ISBN, 
-	                               Borrowing.BorrowingDate, Borrowing.DueDate
-                            FROM     Users INNER JOIN
-                                              Borrowing ON Users.UserID = Borrowing.UserID INNER JOIN
-                                              Books ON Borrowing.CopyID = Books.BookID
-                            WHERE Borrowing.BorrowingID = @UserID AND Borrowing.ActualReturnDate IS NULL;";
+                                   Borrowing.BorrowingDate, Borrowing.DueDate
+                            FROM Borrowing
+                            INNER JOIN Users ON Users.UserID = Borrowing.UserID
+                            INNER JOIN Books ON Borrowing.CopyID = Books.BookID
+                            WHERE Borrowing.ActualReturnDate IS NULL
+                              AND Borrowing.UserID = 2;";
 
             SqlCommand command = new SqlCommand(Query, connection);
 
