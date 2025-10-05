@@ -50,9 +50,9 @@ namespace LibraryBussinessLayer
             return clsBorrowingLibData.GetAllBooks();
         }
 
-        public static string GetBorrowedBookAdditionalInfo(int BorrowingID)
+        public static string GetAddionalInfo(int BorrowingID)
         {
-            return clsBorrowingLibData.GetBorrowedBookAdditionalInfo(BorrowingID);
+            return clsBorrowingLibData.GetBooksAddionalInfo(BorrowingID);
         }
 
         public static DataTable GetAllBorrowedBooksList(int UserID)

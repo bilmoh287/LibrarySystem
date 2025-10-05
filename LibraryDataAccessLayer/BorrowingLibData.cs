@@ -39,17 +39,13 @@ namespace LibraryDataAccessLayer
             return dtbooks;
         }
 
-        public static string GetBorrowedBookAdditionalInfo(int BorrowingID)
+        public static string GetBooksAddionalInfo(int BorrowingID)
         {
             string additionalInfo = "";
 
             using (SqlConnection connection = new SqlConnection(clsDataAccessSetting.ConnectionString))
             {
-                string Query = @"
-                                SELECT b.AdditionInfo
-                                FROM Borrowing br
-                                INNER JOIN Books b ON br.CopyID = b.BookID
-                                WHERE br.BorrowingID = @BorrowingID";
+                string Query = "SELECT AdditionInfo FROM Books WHERE BookID = @BookID";
 
                 using (SqlCommand command = new SqlCommand(Query, connection))
                 {

@@ -22,7 +22,12 @@ namespace LibraryPresentationLayer
 
         private void frmBookAdditionalInfo_Load(object sender, EventArgs e)
         {
-            label1.Text = clsBorrowingLibrary.GetBorrowedBookAdditionalInfo(BookID);
+            label1.Text = clsBorrowingLibrary.GetAddionalInfo(BookID);
+        }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }
