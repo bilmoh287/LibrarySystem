@@ -32,6 +32,7 @@
             this.btnManageUsers = new System.Windows.Forms.Button();
             this.btnManageAuthors = new System.Windows.Forms.Button();
             this.btnBorrowReturn = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // btnManageBooks
@@ -78,11 +79,23 @@
             this.btnBorrowReturn.UseVisualStyleBackColor = true;
             this.btnBorrowReturn.Click += new System.EventHandler(this.btnBorrowReturn_Click);
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Modern No. 20", 28.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.DarkGoldenrod;
+            this.label1.Location = new System.Drawing.Point(167, 122);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(567, 48);
+            this.label1.TabIndex = 4;
+            this.label1.Text = "Library Management System";
+            // 
             // frmMainMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(888, 541);
+            this.ClientSize = new System.Drawing.Size(916, 541);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.btnBorrowReturn);
             this.Controls.Add(this.btnManageAuthors);
             this.Controls.Add(this.btnManageUsers);
@@ -90,6 +103,7 @@
             this.Name = "frmMainMenu";
             this.Text = "Form1";
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -99,6 +113,7 @@
         private System.Windows.Forms.Button btnManageUsers;
         private System.Windows.Forms.Button btnManageAuthors;
         private System.Windows.Forms.Button btnBorrowReturn;
+        private System.Windows.Forms.Label label1;
     }
 }
 
