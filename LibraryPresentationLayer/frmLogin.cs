@@ -58,12 +58,7 @@ namespace LibraryPresentationLayer
             MessageBox.Show($"Welcome, {user.FullName}!",
                 "Login Successful", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-            // Showing directly Books List for normal users
-            if (user.HasPermission(clsUsers.Permissions.BorrowReturn))
-            {
-                frmBorrowReturnBooks frm = new frmBorrowReturnBooks();
-                frm.ShowDialog();
-            }
+ 
 
             // Open MainMenu
             frmMainMenu mainForm = new frmMainMenu();
