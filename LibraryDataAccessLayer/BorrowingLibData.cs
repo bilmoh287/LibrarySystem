@@ -76,7 +76,7 @@ namespace LibraryDataAccessLayer
                             FROM     Users INNER JOIN
                                               Borrowing ON Users.UserID = Borrowing.UserID INNER JOIN
                                               Books ON Borrowing.CopyID = Books.BookID
-                            WHERE Borrowing.ActualReturnDate IS NULL AND Borrowing.BorrowingDate = 2;";
+                            WHERE Borrowing.BorrowingID = @UserID AND Borrowing.ActualReturnDate IS NULL;";
 
             SqlCommand command = new SqlCommand(Query, connection);
 
