@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics.Contracts;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -64,6 +65,13 @@ namespace LibraryPresentationLayer
             dateTimePicker1.Value = _Author.DateOfBirth;
             txtNationality.Text = _Author.Nationality;
             txtContactInfo.Text = _Author.ContactInfo;
+            //loading image
+            if (_Author.ImagePath != "")
+            {
+                pictureBox1.Load(_Author.ImagePath);
+            }
+
+            llRemoveImage.Visible = (_Author.ImagePath != "");
 
         }
 
@@ -73,6 +81,16 @@ namespace LibraryPresentationLayer
             _Author.DateOfBirth = dateTimePicker1.Value;
             _Author.Nationality = txtNationality.Text;
             _Author.ContactInfo = txtContactInfo.Text;
+
+            //setting image path
+            if (pictureBox1.ImageLocation != null)
+            {
+                _Author.ImagePath = pictureBox1.ImageLocation.ToString();
+            }
+            else
+            {
+                _Author.ImagePath = "";
+            }
 
             if (_Author.Save())
             {
@@ -92,6 +110,29 @@ namespace LibraryPresentationLayer
         private void btnClose_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void llSetImage_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            openFileDialog1.Filter = "Image Files|*.jpg;*.jpeg;*.png;*.JFIF;*.gif;*.bmp";
+            openFileDialog1.FilterIndex = 1;
+            openFileDialog1.RestoreDirectory = true;
+
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                // Process the selected file
+                string selectedFilePath = openFileDialog1.FileName;
+                //MessageBox.Show("Selected Image is:" + selectedFilePath);
+
+                pictureBox1.Load(selectedFilePath);
+                // ...
+            }
+        }
+
+        private void llRemoveImage_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            pictureBox1.ImageLocation = null;
+            llRemoveImage.Visible = false;
         }
     }
 }

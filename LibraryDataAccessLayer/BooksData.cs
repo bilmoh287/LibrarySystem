@@ -243,9 +243,9 @@ namespace LibraryDataAccessLayer
             using (SqlConnection connection = new SqlConnection(clsDataAccessSetting.ConnectionString))
             {
                 string Query = @"
-            SELECT * 
-            FROM Books
-            WHERE Title LIKE @Keyword";
+                                SELECT * 
+                                FROM Books
+                                WHERE Title LIKE @Keyword";
 
                 using (SqlCommand command = new SqlCommand(Query, connection))
                 {

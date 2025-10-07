@@ -65,7 +65,7 @@ namespace LibraryPresentationLayer
         private void btnAddAuthor_Click(object sender, EventArgs e)
         {
             frmAddEditAuthors frm = new frmAddEditAuthors(-1);
-            frm.OnBookSaved += _RefreshAuthorToChoose;
+            frm.OnAuthorSaved += _RefreshAuthorToChoose;
             frm.ShowDialog();
         }
     }

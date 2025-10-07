@@ -246,13 +246,13 @@ namespace LibraryDataAccessLayer
                         if (reader.Read())
                         {
                             UserID = (int)reader["UserID"];
-                            FullName = (string)reader["FullName"];
+                            FullName =  reader["FullName"].ToString().Trim();
                             DateOfBirth = (DateTime)reader["DateOfBirth"];
                             ContactInfo = reader["ContactInfo"] != DBNull.Value ? (string)reader["ContactInfo"] : "";
                             LibraryCard = reader["LibraryCardNumber"] != DBNull.Value ? (string)reader["LibraryCardNumber"] : "";
                             Permission = (int)reader["Permission"];
-                            UsernameOut = (string)reader["Username"];
-                            PasswordOut = (string)reader["Password"];
+                            UsernameOut = reader["Username"].ToString().Trim();
+                            PasswordOut = reader["Password"].ToString().Trim();
                             IsFound = true;
                         }
                         reader.Close();
